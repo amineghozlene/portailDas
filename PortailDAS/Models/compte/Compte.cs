@@ -15,6 +15,8 @@ namespace PortailDAS
         public virtual Societe idSociete { get; set; }
         public virtual int idRole { get; set; }
         public virtual CartePaiement idCartePaiement { get; set; }
+        
+        public virtual string etatValidation { get; set; }
 
         public Compte() { }
 

@@ -13,6 +13,7 @@
     <property name="idRole" column="idRole" type="int" not-null="true" />
     <!--<many-to-one name="idRole" column="idRole" class="PortailDAS.Role" not-found="ignore" fetch="join" />-->
     <many-to-one name="idCartePaiement" column="idCartePaiement" class="PortailDAS.CartePaiement" cascade="all" not-found="ignore" fetch="join" />
+    <property name="etatValidation" column="etatValidation" type="string" length="20"  />
     <!--<property name="idCartePaiement" column="idCartePaiement" type="int" />-->
   </class>
 </hibernate-mapping>

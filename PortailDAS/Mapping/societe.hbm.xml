@@ -7,6 +7,8 @@
     <property name="registreDeCommerce" column="registreDeCommerce" type="string" length="100" />
     <property name="matriculeFiscale" column="matriculeFiscale" type="string" length="100" />
     <property name="adresseSociete" column="adresseSociete" type="string" length="100" />
+    <property name="type" column="type" type="string" length="45" />
+    <property name="domaineActivite" column="domaineActivite" type="string" length="100" />
 
   </class>
 

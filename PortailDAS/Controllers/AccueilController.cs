@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Management.Automation;
+﻿using System.Web.Mvc;
 
 namespace PortailDAS
 {
@@ -52,6 +47,8 @@ namespace PortailDAS
                 soc.adresseSociete = "";
                 soc.matriculeFiscale = "";
                 soc.registreDeCommerce = "";
+                soc.domaineActivite = "";
+                soc.type = "";
             }
             Role rol = new Role();
             carteP.operateur = "";
@@ -61,9 +58,12 @@ namespace PortailDAS
             
             unCompte.idSociete = soc;
             unCompte.idCartePaiement = carteP;
-
+            if (soc.type.Equals("universite")){
+                unCompte.etatValidation = "nonValidé";
+            }
+            else unCompte.etatValidation = "validé";
             CompteDAO.creer(unCompte);
-
+           
             //Add user into AD
 
            
@@ -81,12 +81,12 @@ namespace PortailDAS
             {
                 retourServeur = Content("authentificationEchouee");
             }
-            //else if (compteDeLUtilisateur.etat == CompteBS.INACTIF)
-            //{
-            //    retourServeur = Content("compteDesactive|" + (message != "" ? message : ((String)HttpContext.GetGlobalResourceObject("langue", "COMPTE_CORRESPONDANT_AU_LOGIN_DESACTIVE")).Replace("[#EMAIL]", email).Replace("[#NUMERO_TELEPHONE]", numeroTelephone).Replace("[#NOM1_SOCIETE]", nom1).Replace("\n", "<br/>")));
-            //    Session["compteUtilisateur"] = null;
-            //    Session["identifiantCompte"] = null;
-            //}
+            else if (compteDeLUtilisateur.etatValidation.Equals("nonValidé"))
+            {
+                retourServeur = Content("authentificationEchouee! Compte non validé");
+                Session["compteUtilisateur"] = null;
+                Session["identifiantCompte"] = null;
+            }
             else
             {
                 retourServeur = View("~/views/accueil/accueil.cshtml");

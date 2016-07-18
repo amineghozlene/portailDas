@@ -12,6 +12,8 @@ namespace PortailDAS
         public virtual string registreDeCommerce { get; set; }
         public virtual string matriculeFiscale { get; set; }
         public virtual string adresseSociete { get; set; }
+        public virtual string type { get; set; }
+        public virtual string domaineActivite { get; set; }
 
         public Societe() { }
 
