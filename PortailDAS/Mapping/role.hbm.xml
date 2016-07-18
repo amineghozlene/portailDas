@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PortailDAS">
+  <class name="PortailDAS.Role" table="Role">
+
+    <id name="idRole" column="idRole" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="libelle" column="libelle" type="string" length="50" />
+
+  </class>
+
+</hibernate-mapping>

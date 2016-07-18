@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PortailDAS">
+  <class name="PortailDAS.CartePaiement" table="cartepaiement">
+
+    <id name="idCartePaiement" column="idCartePaiement" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="operateur" column="operateur" type="string" length="50" />
+    <property name="typeCarte" column="typeCarte" type="string" length="50" />
+    <property name="codeAutorisation" column="codeAutorisation" type="int" />
+
+  </class>
+
+</hibernate-mapping>

@@ -1,0 +1,142 @@
+﻿@if (!Request.IsAjaxRequest())
+{
+
+    @Html.Raw("<!DOCTYPE html>")
+    @Html.Raw("<html>")
+    @Html.Raw("<head>")
+    @Html.Raw("<meta charset=\"utf-8\">")
+    @Html.Raw("<title>DAS Portail - Accueil</title>")
+
+    <!-- Favicons -->
+    @*<link rel="shortcut icon" type='image/x-icon' href="/Ressource/img/favicon/favicon.ico">*@
+    <!-- Mobile Metas -->
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
+
+
+    @Html.Raw("<meta name=\"viewport\" content=\"width = device - width, initial - scale = 1.0\">")
+    @Styles.Render("~/bundles/fichiercss")
+    @Scripts.Render("~/bundles/pagejavascript")
+
+    @Html.Raw("</head>")
+}
+<body class="index">
+    <!-- preload loaders -->
+    <img style="display:none" src="~/Ressource/img/loader-light.gif" alt="loader" title="loader">
+    <img style="display:none" src="~/Ressource/img/loader-dark.gif" alt="loader" title="loader">
+
+    <header id="header" class="default sticky">
+
+        <nav class="navbar">
+            <div class="container desktop-navbar">
+                <a href="index-2.html" class="logo">
+                    <img src="~/Ressource/img/logodas.png" alt="DAS">
+                </a>
+                <ul id="main-menu" class="custom">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="#catalogues">Catalogues</a>
+
+                    </li>
+                    <li>
+                        <a href="#Service">Service<i>Page elements</i></a>
+                    </li>
+                    @if ((Compte)Session["compteUtilisateur"] != null) {
+                        <li><a onclick="afficherProfile();" title="Mon Compte">Mon Compte</a></li>
+                        <li><a onclick="deconnexion();" title="Déconnexion">Déconnexion</a></li>
+                    } else {
+                        <li><a href="#login-register" data-target="#login-register" data-toggle="modal" title="Create an account" >Register</a></li>
+                    }
+                </ul>
+            </div><!-- .desktop-navbar -->
+
+            <div class="container mobile-navbar">
+                <a href="index.html" class="logo">
+                    <img src="~/Ressource/img/logodas.png" alt="DAS">
+                </a>
+                <ul class="mobile-btn">
+                    <li><a class="btn-navbar" href="#"><span class="fa fa-reorder"></span></a></li>
+                </ul>
+            </div><!-- .mobile-navbar -->
+
+        </nav><!-- .navbar -->
+        <nav id="mobile-menu"></nav>
+    </header><!-- #header -->
+
+    <div id="header-space"></div>
+    <div id="page-content" role="main">
+        @RenderBody()
+    </div>
+    <footer id="footer">
+        <div class="container">
+            <!-- .row-->
+            <!-- .row-->
+            <hr class="devider-heavy">
+            <ul class="nav text-center">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Shortcodes</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Pages</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <hr class="devider-heavy">
+            <div class="row middle">
+                <div class="col-md-7">
+
+                    <ul class="touch">
+                        <li><i class="fa icomoon-location"></i><p>322 Victoria Street<br>Darlinghurst NSW 2010</p></li>
+                        <li><i class="fa fa-phone"></i><p>1800-2233-4455<br>1800-6677-8899</p></li>
+                        <li><i class="fa fa-envelope"></i><p><a href="mailto:victoria@yoursite.com">victoria@yoursite.com</a><br><a href="mailto:macdonald@yoursite.com">macdonald@yoursite.com</a></p></li>
+                    </ul>
+
+                </div><!-- .col-md-7 -->
+                <div class="col-md-5">
+
+                    <ul class="social">
+                        <li><a href="#" class="rss"></a></li>
+                        <li><a href="#" class="google"></a></li>
+                        <li><a href="#" class="vimeo"></a></li>
+                        <li><a href="#" class="youtube"></a></li>
+                        <li><a href="#" class="facebook"></a></li>
+                        <li><a href="#" class="twitter"></a></li>
+                    </ul>
+
+                </div><!-- .col-md-5 -->
+            </div><!-- .row -->
+            <div class="push"></div>
+        </div><!-- .container -->
+        <div class="credits">DAS © 2016<span>|</span><a href="#">Terms</a><span>|</span><a href="#">Legal Notice</a></div>
+    </footer>
+
+ @Scripts.Render("~/bundles/fichierjavascript")  
+    <div class="alert alert-error">
+        <div class="alert-heading">
+            <a title="Close" class="btn btn-white btn-icon-close close"></a>
+
+            <h4>
+                <i class="fa fa-exclamation"></i><span>Error!</span>
+            </h4>
+
+        </div><!-- .alert-heading -->
+        <div class="alert-content">
+            <p></p>
+        </div><!-- .alert-content -->
+    </div>
+    <div class="alert alert-success">
+        <div class="alert-heading">
+            <a title="Close" class="btn btn-white btn-icon-close close" href="#"></a>
+
+            <h4>
+                <i class="fa fa-check"></i><span>Success!</span>
+            </h4>
+
+        </div><!-- .alert-heading -->
+        <div class="alert-content">
+            <p></p>
+        </div><!-- .alert-content -->
+    </div>
+</body>
+</html>

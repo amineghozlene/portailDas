@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewBag.Title = "Profile";
+}
+<div class="container">
+
+    <!-- CONTENT -->
+    <div id="content">
+
+        <div id="profile" class="container-out container-light">
+            <h2>Profile</h2>
+
+                <div class="form-field">
+                    <div class="row">
+                        <label for="register-nom" class="col-sm-3">Nom</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="text" id="register-nom" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).nom : "")" required />
+                        </div>
+                    </div>
+                </div><!-- .form-field -->
+                <div class="form-field">
+                    <div class="row">
+                        <label for="register-prenom" class="col-sm-3">Prénom</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="text" id="register-prenom" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).prenom : "")" required />
+                        </div>
+                    </div>
+                </div><!-- .form-field -->
+                <div class="form-field">
+                    <div class="row">
+                        <label for="register-email" class="col-sm-3">Email</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="text" id="register-email" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).email : "")" required />
+                        </div>
+                    </div>
+                </div><!-- .form-field -->
+                <div class="form-field">
+                    <div class="row">
+                        <label for="register-login" class="col-sm-3">Login</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="text" id="register-login" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).login : "")" required />
+                        </div>
+                    </div>
+                </div><!-- .form-field -->
+                @*<div class="form-field">
+                    <div class="row">
+                        <label for="ancien-password" class="col-sm-3">Ancien Password </label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="password" minlength="6" id="ancien-password" required />
+                            <p class="form-desc">6 or more characters</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="row">
+                        <label for="nv-password" class="col-sm-3">Nouveau Password </label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="password" minlength="6" id="nv-password" required />
+                            <p class="form-desc">6 or more characters</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div class="row">
+                        <label for="nv-confirm" class="col-sm-3">Confirm </label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="password" id="nv-confirm" minlength="6" placeholder="Retype password" required />
+                            <p class="form-desc">6 or more characters</p>
+                        </div>
+                    </div>
+                </div>*@
+                <div class="form-field">
+                    <div class="row">
+                        <label for="register-societe" class="col-sm-3">Nom de la société</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="text" id="register-societe" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).idSociete.nomSociete : "")" required />
+                        </div>
+                    </div>
+                </div><!-- .form-field -->
+
+                <div class="form-field">
+                    <div class="row">
+                        <label for="register-commerce" class="col-sm-3">Registre de commerce</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" type="text" id="register-commerce" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).idSociete.registreDeCommerce : "")" required />
+                        </div>
+                    </div>
+                </div><!-- .form-field -->
+            <div class="form-field">
+                <div class="row">
+                    <label for="matricule-fiscale" class="col-sm-3">Matricule fiscale</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" type="text" id="matricule-fiscale" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).idSociete.matriculeFiscale : "")" required />
+                    </div>
+                </div>
+            </div><!-- .form-field -->
+            <div class="form-field">
+                <div class="row">
+                    <label for="adresse" class="col-sm-3">Adresse societe</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" type="text" id="adresse" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).idSociete.adresseSociete : "")" required />
+                    </div>
+                </div>
+            </div><!-- .form-field -->
+            <div class="form-field">
+                <div class="row">
+                    <label for="operateur" class="col-sm-3">C.P Operateur</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" type="text" id="operateur" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).idCartePaiement.operateur : "")" required />
+                    </div>
+                </div>
+            </div><!-- .form-field -->
+            <div class="form-field">
+                <div class="row">
+                    <label for="typeCarte" class="col-sm-3">Type de carte</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" type="text" id="typeCarte" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).idCartePaiement.typeCarte : "")" required />
+                    </div>
+                </div>
+            </div><!-- .form-field -->
+            <div class="form-field">
+                <div class="row">
+                    <label for="codeAutorisation" class="col-sm-3">Code autorisation</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" type="number" id="codeAutorisation" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).idCartePaiement.codeAutorisation.ToString() : "")" required />
+                    </div>
+                </div>
+            </div><!-- .form-field -->
+
+                <div class="form-field text-right">
+                    <input value="Register" class="btn" onclick="modifierCompte();">
+                </div><!-- .form-field -->
+         
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    initialisationProfile();
+</script>

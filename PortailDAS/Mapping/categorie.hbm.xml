@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PortailDAS">
+  <class name="PortailDAS.Categorie" table="Categorie">
+
+    <id name="idCategorie" column="idCategorie" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="titre" column="titre" type="string" length="50" />
+    <property name="description" column="description" type="string" length="100" />
+    <property name="dateCreation" column="dateCreation"  not-null="true" generated="insert" type="timestamp" />
+    <property name="image" column="image" type="string" length="150" />
+    <property name="active" column="active" type="int" />
+
+  </class>
+
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PortailDAS">
+  <class name="PortailDAS.Service" table="Service">
+
+    <id name="idService" column="idService" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="titre" column="titre" type="string" length="50" />
+    <property name="description" column="description" type="string" length="100" />
+    <property name="prixHT" column="prixht" not-null="false" precision="10"  scale="3" type="decimal" />
+    <property name="image" column="image" type="string" length="150" />
+    <property name="active" column="active" type="int" />
+    <many-to-one name="idCategorie" column="idCategorie" class="PortailDAS.Categorie" not-found="ignore" fetch="join" />
+
+  </class>
+
+</hibernate-mapping>

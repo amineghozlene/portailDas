@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PortailDAS">
+  <class name="PortailDAS.Compte" table="Compte" dynamic-update="true">
+    <cache usage="read-write"/>
+    <id name="login" column="idcompte" type="String"/>
+    <property name="nom" column="nom" type="string" length="45" />
+    <property name="prenom" column="prenom" type="string" length="45" />
+    <many-to-one name="idSociete" column="idsociete" class="PortailDAS.Societe" cascade="all" not-found="ignore" fetch="join" />
+    <property name="email" column="email" type="string" length="45" />
+    <property name="password" column="password" type="string" length="45"  />
+    <!--<one-to-one name="idSociete" class="PortailDAS.Societe" constrained="false" />
+    <one-to-one name="idRole" class="PortailDAS.Role" constrained="false" />-->
+    <property name="idRole" column="idRole" type="int" not-null="true" />
+    <!--<many-to-one name="idRole" column="idRole" class="PortailDAS.Role" not-found="ignore" fetch="join" />-->
+    <many-to-one name="idCartePaiement" column="idCartePaiement" class="PortailDAS.CartePaiement" cascade="all" not-found="ignore" fetch="join" />
+    <!--<property name="idCartePaiement" column="idCartePaiement" type="int" />-->
+  </class>
+</hibernate-mapping>
