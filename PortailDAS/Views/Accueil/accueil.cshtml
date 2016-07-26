@@ -245,7 +245,7 @@
                         <ul>
                             <li class="selector"></li>
                             <li><a data-categories="*" class="active">Tout</a></li>
-                           @* @{
+                            @{
         IList<Service> listeService = ServiceDAO.recupererListeDesServicesAvecCatalogue();
         IList<Service> listeService2 = listeService.GroupBy(x => x.idCategorie.idCategorie).Select(x => x.First()).ToList<Service>();
         int nbrService2 = listeService2.Count();
@@ -256,18 +256,14 @@
             cpt1++;
         }
 
-    }*@
-                            <li><a data-categories="animation">Animation</a></li>
-                            <li><a data-categories="design">Design</a></li>
-                            <li><a data-categories="illustration" class="">Illustration</a></li>
-                            <li><a data-categories="photography">Photography</a></li>
-                            <li><a data-categories="web">Web</a></li>
+    }
+                            
                         </ul>
                         <p><b>Trié par:</b> <span class="project-filter-current">Tout</span></p>
                     </div>
                 </div><!-- .project-filter -->
                 <section class="projects grid" data-columns="4">
-               @* @{
+               @{
         int cpt2 = 0;
         while (cpt2 < nbrService) {
             <article class="project project-animated @listeService[cpt2].idCategorie.idCategorie">
@@ -297,7 +293,7 @@
             </article><!-- .project -->
             cpt2++;
         }
-    }*@
+    }
 
 
                 </section><!-- .projects -->
@@ -534,15 +530,15 @@
                                     </div><!-- .form-field -->
                                     <div class="form-field">
                                         <div class="row">
-                                            <label for="register-typesociete" class="col-sm-3">Type de l'organisation<span class="require">*</span></label>
+                                            <font class="col-sm-9"></font>Type de l'organisation<span class="require">*</span>
                                             <div class="col-sm-9">
-                                                Université <input class="form-control" type="radio"  name ="register-typesociete" id="register-typesociete" onclick="toggle()"  value="0" />
-                                                Entreprise <input class="form-control" type="radio" name="register-typesociete" id="register-typesociete" onblur="toggle()" value="1"  />
+                                                Université  <input class="form-control" type="radio" name="register-typesociete" id="register-typesociete" onclick="toggle()" value="0" />
+                                                Entreprise  <input class="form-control" type="radio" name="register-typesociete" id="register-typesociete" onclick="toggle()" value="1" />
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-field" id="entreprise" style="display:none">
+                                   <div class="form-field" id="entreprise" style="display:none">
                                         <div class="row">
                                             <label for="register-societe" class="col-sm-3">Nom de la société<span class="require">*</span></label>
                                             <div class="col-sm-9">

@@ -673,6 +673,7 @@
     <Content Include="Ressource\js\library\slider-revolution\font\revicons90c6.ttf" />
     <Content Include="Ressource\js\library\slider-revolution\font\revicons90c6.woff" />
     <Content Include="Views\Accueil\profile.cshtml" />
+    <Content Include="Views\Accueil\acceuilElearning.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

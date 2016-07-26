@@ -89,7 +89,9 @@ namespace PortailDAS
             }
             else
             {
-                retourServeur = View("~/views/accueil/accueil.cshtml");
+                if(compteDeLUtilisateur.idRole==6 || compteDeLUtilisateur.idRole == 7 || compteDeLUtilisateur.idRole == 8)
+                retourServeur = View("~/views/accueil/accueilElearning.cshtml");
+                else retourServeur = View("~/views/accueil/accueil.cshtml");
                 //ViewData["chargerLayout"] = "oui";
                 //if (Request["resterConnecter"] == "oui")
                 //{
@@ -133,22 +135,6 @@ namespace PortailDAS
             return View("~/views/accueil/profile.cshtml");
         }
         
-        public bool afficherRole()
-        {
-            bool test= false;
-            Societe soc = null;
-            if (Request["registre-societe"] != null)
-            {
-                soc = SocieteDAO.recupererSociete(Request["registre-societe"].ToString());
-            }
-            if (soc!=null)
-            {
-                if (soc.type.Equals("universite"))
-                {
-                    test = true;
-                }
-            }
-            return test;
-        }
+       
     }
 }
