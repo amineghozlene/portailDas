@@ -1584,32 +1584,33 @@ a.avatar:hover > .btn {
 	}
 	input[type="checkbox"],
 	input[type="radio"] {
-		visibility: hidden;
-		position: absolute;
+		
+		position: relative;
+        background-color:aqua;
 	}
 		input[type="checkbox"] + label,
 		input[type="radio"] + label {
 			position: relative;
 			padding-left: 25px;
 			font-weight: normal;
-			color: #888;
+			color: #fff;
 		}
 		input[type="checkbox"] + label:before,
 		input[type="radio"] + label:before {
-			position: absolute;
+			position: relative;
 			left: 0;
-			content: "";
-			display: inline-block;
+			
+			display: initial;
 			width: 19px;
 			height: 19px;
-			background-color:#2d343e;
+			background-color:#fff;
 			line-height: 1;
 			border-radius: 2px;
 		}
 		input[type="radio"] + label:after {
-			display: none;
-			content: "";
-			position: absolute;
+			display: initial;
+			
+			position: relative;
 			height:9px;
 			width: 9px;
 			left: 5px;
@@ -1619,14 +1620,14 @@ a.avatar:hover > .btn {
 		input[type="checkbox"] + label:after {
 			position: absolute;
 			font-family: 'icomoon';
-			content: "\e6fe";
+			
 			color: #fff;
 			left: 0;
 			width: 19px;
 			text-align: center;
 			line-height: 19px;
 			top: 0;
-			display: none;
+			
 		}
 		input[type="radio"] + label:before,
 		input[type="radio"] + label:after {
@@ -1634,7 +1635,8 @@ a.avatar:hover > .btn {
 		}
 		input[type="checkbox"]:checked + label:after,
 		input[type="radio"]:checked + label:after {
-			display: block;
+			display: initial;
+            color:aquamarine;
 		}
 		.form-desc {
 			font-size: 12px;
