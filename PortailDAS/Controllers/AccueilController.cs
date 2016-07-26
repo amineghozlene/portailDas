@@ -132,6 +132,23 @@ namespace PortailDAS
             CompteDAO.mettreAJour(unCompte);
             return View("~/views/accueil/profile.cshtml");
         }
-
+        
+        public bool afficherRole()
+        {
+            bool test= false;
+            Societe soc = null;
+            if (Request["registre-societe"] != null)
+            {
+                soc = SocieteDAO.recupererSociete(Request["registre-societe"].ToString());
+            }
+            if (soc!=null)
+            {
+                if (soc.type.Equals("universite"))
+                {
+                    test = true;
+                }
+            }
+            return test;
+        }
     }
 }

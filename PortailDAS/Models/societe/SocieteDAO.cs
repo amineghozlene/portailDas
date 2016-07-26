@@ -1,4 +1,5 @@
 ﻿using NHibernate;
+using NHibernate.Criterion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,18 @@ namespace PortailDAS
             using (ISession session = SessionNHibernate.ouvrirSession())
             {
                 Societe soc = session.Get<Societe>(nom);
+                
                 return soc;
+            }
+        }
+        public static IList<Societe> recupererToutSociete()
+        {
+            using (ISession session = SessionNHibernate.ouvrirSession())
+            {
+                ICriteria criteres = session.CreateCriteria(typeof(Societe));
+                criteres.Add(Restrictions.Eq("type", "universite"));
+                IList<Societe> socs = criteres.List<Societe>();
+                return socs;
             }
         }
         public static Societe creerSociete(Societe soc)

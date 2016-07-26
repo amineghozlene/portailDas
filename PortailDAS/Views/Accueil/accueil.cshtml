@@ -532,25 +532,45 @@
                                             </div>
                                         </div>
                                     </div><!-- .form-field -->
-
-
                                     <div class="form-field">
                                         <div class="row">
-                                            <label for="register-societe" class="col-sm-3">Nom de la société<span class="require">*</span></label>
+                                            <label for="register-typesociete" class="col-sm-3">Type de l'organisation<span class="require">*</span></label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" type="text" name="register-societe" id="register-societe" required/>
+                                                Université <input class="form-control" type="radio"  name ="register-typesociete" id="register-typesociete" onclick="toggle()"  value="0" />
+                                                Entreprise <input class="form-control" type="radio" name="register-typesociete" id="register-typesociete" onblur="toggle()" value="1"  />
                                             </div>
                                         </div>
                                     </div>
 
-                                    @{
-                                        Societe soc=null;
-                                        if (Request["registre-societe"].ToString() != null) {
-                                            soc = SocieteDAO.recupererSociete(Request["registre-societe"].ToString());
-                                        }
-                                        if (soc.type.Equals("universite"))
-                                        {
-                                            <div class="form-field">
+                                    <div class="form-field" id="entreprise" style="display:none">
+                                        <div class="row">
+                                            <label for="register-societe" class="col-sm-3">Nom de la société<span class="require">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" type="text" name="register-societe" id="register-societe"  required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-field" id="universite" style="display:none">
+                                        <div class="row">
+                                            <label for="register-societe" class="col-sm-3">Nom de la société<span class="require">*</span></label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control" name="register-societe" id="register-societe" required>
+                                                   <option value="0" selected>selectionner votre </option>
+                                                   @{
+                                                       IList<Societe> socs = SocieteDAO.recupererToutSociete();
+                                                       foreach (Societe soc in socs)
+                                                       {
+                                                           <option value="@soc.idSociete">@soc.nomSociete</option>
+                                                       }
+
+                                                   }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                            <div class="form-field" id="role"  style="display:none">
                                                 <div class="row">
                                                     <label for="register-role" class="col-sm-3">Fonction<span class="require">*</span></label>
                                                     <div class="col-sm-9">
@@ -563,9 +583,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        }
+       
 
-                                    }
 
 
                                     <!-- .form-field -->
@@ -583,7 +602,7 @@
                                 </div>
                             </div><!-- .tab-content -->
                         </div><!-- .tab -->
-                                                    }
+    }
                             }
                     </div><!-- .modal-content -->
                 </div><!-- .modal-body -->

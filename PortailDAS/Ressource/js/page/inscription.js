@@ -117,3 +117,24 @@ function afficherProfile(){
         }
     });
 }
+function toggle() {
+    var element = document.getElementById('register-typesociete');
+    var element1 = document.getElementById('entreprise');
+    var element2 = document.getElementById('universite');
+    var element3 = document.getElementById('role');
+
+
+            if (element==0) {
+                element2.style.display = 'initial';
+                element3.style.display = 'initial';
+                element1.style.display = 'none';
+                
+            } else {
+                element2.style.display = 'none';
+                element3.style.display = 'none';
+                element1.style.display = 'initial';
+            }
+        }
+
+    
+
