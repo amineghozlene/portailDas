@@ -1586,7 +1586,7 @@ a.avatar:hover > .btn {
 	input[type="radio"] {
 		
 		position: relative;
-        background-color:aqua;
+        
 	}
 		input[type="checkbox"] + label,
 		input[type="radio"] + label {
@@ -1636,7 +1636,7 @@ a.avatar:hover > .btn {
 		input[type="checkbox"]:checked + label:after,
 		input[type="radio"]:checked + label:after {
 			display: initial;
-            color:aquamarine;
+            
 		}
 		.form-desc {
 			font-size: 12px;
