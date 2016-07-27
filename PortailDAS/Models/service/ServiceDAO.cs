@@ -10,6 +10,7 @@ namespace PortailDAS
 {
 
     public class ServiceDAO {
+        public static object Restriction { get; private set; }
 
         public static IList<Service> recupererListeDesServicesAvecCatalogue() {
             HttpSessionState Session = ((HttpSessionState)HttpContext.Current.Session);
@@ -48,6 +49,7 @@ namespace PortailDAS
                 try
                 {
                     ICriteria criteres = session.CreateCriteria(typeof(ServiceCompte));
+                  //  criteres.Add(Restriction.eq());
                     listeDesServices = criteres.List<ServiceCompte>();
                 }
                 catch (Exception exception)

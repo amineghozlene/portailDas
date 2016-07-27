@@ -45,10 +45,10 @@ namespace PortailDAS
                          "~/Ressource/js/library/isotope/jquery.isotope.js",
                          //scripts for current page -->
                          "~/Ressource/js/page/home.js",
-                         
-                         //Main theme javaScript file--,
 
+                         //Main theme javaScript file--,
                          "~/Ressource/js/theme.js"
+
               ));
 
             bundles.Add(new ScriptBundle("~/bundles/pagejavascript").Include(

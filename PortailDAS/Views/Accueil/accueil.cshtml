@@ -532,13 +532,13 @@
                                         <div class="row">
                                             <label  class="col-sm-3">Type de l'organisation<span class="require">*</span></label>
                                             <div class="col-sm-9">
-                                               <input  type="radio"  name ="register-typesociete"  id="register-typesociete" onclick="toggle()" value="0" checked="checked"/><label>Université</label> 
-                                                <input type="radio" name="register-typesociete" id="register-typesociete" onclick="toggle()" value="1"  /><label>Entreprise</label>
+                                               <input  type="radio"  name ="register-typesociete"  id="universite" onclick="toggle()" value="0"/>&nbsp;&nbsp;&nbsp;&nbsp;Université &nbsp;&nbsp;&nbsp;&nbsp;
+                                               <input type="radio" name="register-typesociete" id="entreprise" onclick="toggle()" value="1"  />&nbsp;&nbsp;&nbsp;&nbsp;Entreprise
                                             </div>
                                         </div>
                                     </div>
 
-                                   <div class="form-field" id="entreprise" style="display:none">
+                                   <div class="form-field" id="entrep" style="display:none">
                                         <div class="row">
                                             <label for="register-societe" class="col-sm-3">Nom de la société<span class="require">*</span></label>
                                             <div class="col-sm-9">
@@ -546,12 +546,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-field" id="universite" style="display:none">
+                                    <div class="form-field" id="univ" style="display:none">
                                         <div class="row">
-                                            <label for="register-societe" class="col-sm-3">Nom de la société<span class="require">*</span></label>
+                                            <label for="register-societe" class="col-sm-3">Nom de l'université<span class="require">*</span></label>
                                             <div class="col-sm-9">
                                                 <select class="form-control" name="register-societe" id="register-societe" required>
-                                                   <option value="0" selected>selectionner votre </option>
+                                                   <option value='0' selected>selectionner votre université</option>
                                                    @{
                                                        IList<Societe> socs = SocieteDAO.recupererToutSociete();
                                                        foreach (Societe soc in socs)
@@ -571,7 +571,7 @@
                                                     <label for="register-role" class="col-sm-3">Fonction<span class="require">*</span></label>
                                                     <div class="col-sm-9">
                                                         <select class="form-control" name="register-role" id="register-role" value="" required>
-                                                            <option class="form-control" value="0" selected>sélectionner votre fonction</option>
+                                                            <option class="form-control" value='0' selected>sélectionner votre fonction</option>
                                                             <option class="form-control" value="1">Etudiant</option>
                                                             <option class="form-control" value="2">Enseignant</option>
                                                             <option class="form-control" value="3">Administrateur </option>

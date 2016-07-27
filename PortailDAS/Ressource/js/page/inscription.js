@@ -6,7 +6,7 @@ function inscription() {
     erreur = false;
     messageErreur = '';
     $('#inscription .form-control').each(function () {
-        if ($(this).val() != '') {
+        if ($(this).val() != '' ) {
             erreur = false;
             messageErreur = '';
             $(this).removeClass('erreurSaisie');
@@ -24,6 +24,17 @@ function inscription() {
         messageErreur += 'Password incorrect.<br/>';
         $('#register-confirm').addClass('erreurSaisie');
     }
+    //debut probleme jqueryy
+    if ($('#register-societe option:selected').val() == '0') {
+        alert("selectioner une société");
+        messageErreur += 'Password incorrect.<br/>';
+        $('#register-societe').addClass('erreurSelect');
+    }
+    if ($('#register-role').selected.val() == '0') {
+        messageErreur += 'Password incorrect.<br/>';
+        $('#register-role').addClass('erreurSelect');
+    }
+    // fin
     if (erreur == true) {
         messageErreur += 'Champ obligatoire doit etre rempli.<br/>';
     }
@@ -36,7 +47,9 @@ function inscription() {
                 'register-email': $('#register-email').val(),
                 'register-login': $('#register-login').val(),
                 'register-password': $('#register-password').val(),
-                'register-societe': $('#register-societe').val()
+              //  'register-typesociete':$('#register-typesociete').checked.val(),
+              //  'register-societe': $('#register-unversite').val() || $('#register-entreprise').val(),
+              //  'register-role': $('#register-unversite').val()
             },
             url: "/accueil/inscription",
             success: function (msg) {
@@ -118,26 +131,32 @@ function afficherProfile(){
     });
 }
 function toggle() {
-    alert("universite");
-    var element = document.getElementById('register-typesociete');
-    var element1 = document.getElementById('entreprise');
-    var element2 = document.getElementById('universite');
+  
+    /*var universite = document.getElementByName('universite');
+    var entreprise = document.getElementByName('entreprise');*/
+    var element1 = document.getElementById('entrep');
+    var element2 = document.getElementById('univ');
     var element3 = document.getElementById('role');
 
 
-    if (element == 0) {
-        alert("universite");
-                element2.style.display = 'initial';
-                element3.style.display = 'initial';
-                element1.style.display = 'none';
-                
+    if (document.getElementById('universite').checked==true) {
+        
+        element2.style.display = 'initial';
+        element3.style.display = 'initial';
+        element1.style.display = 'none';
+        
+
     } else {
-        alert("entreprise");
-                element2.style.display = 'none';
-                element3.style.display = 'none';
-                element1.style.display = 'initial';
-            }
+        if (document.getElementById('entreprise').checked == true) {
+           
+            element2.style.display = 'none';
+            element3.style.display = 'none';
+            element1.style.display = 'initial';
+            
         }
+    }
+
+}
 
     
 
