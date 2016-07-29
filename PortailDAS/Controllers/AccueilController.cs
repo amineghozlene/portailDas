@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 
 namespace PortailDAS
 {
@@ -48,13 +49,14 @@ namespace PortailDAS
                 soc.matriculeFiscale = "";
                 soc.registreDeCommerce = "";
                 soc.domaineActivite = "";
-                soc.type = "";
+                soc.type = "entreprise" ;
             }
-            Role rol = new Role();
+            int idRole = Int32.Parse(Request["register-role"].ToString());
+            Role rol = RoleDAO.recuperer(idRole);
             carteP.operateur = "";
             carteP.typeCarte = "";
             carteP.codeAutorisation = 111;
-            unCompte.idRole = RoleBS.ICOMPTE_CLIENT;
+            unCompte.idRole = rol.idRole;
             
             unCompte.idSociete = soc;
             unCompte.idCartePaiement = carteP;

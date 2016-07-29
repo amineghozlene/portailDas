@@ -24,17 +24,33 @@ function inscription() {
         messageErreur += 'Password incorrect.<br/>';
         $('#register-confirm').addClass('erreurSaisie');
     }
-    //debut probleme jqueryy
-    if ($('#register-societe option:selected').val() == '0') {
-        alert("selectioner une société");
-        messageErreur += 'Password incorrect.<br/>';
-        $('#register-societe').addClass('erreurSelect');
+    if ($('input:checked').val() != '0' && $('input:checked').val() != '1') {
+        alert("cc")
+        messageErreur += 'sélectionner le type de votre organisation.<br/>';
+        $('#register-typesociete').addClass('erreurRadio');
     }
-    if ($('#register-role').selected.val() == '0') {
-        messageErreur += 'Password incorrect.<br/>';
+    else {
+        alert('cccc')
+        messageErreur = '';
+        $('#register-typesociete').removeClass('erreurRadio');
+    }
+    if ($('#register-universite').val() == '0') {
+        messageErreur += 'unversité non sélectionner.<br/>';
+        $('#register-universite').addClass('erreurSelect');
+    }
+    else {
+        messageErreur = '';
+        $('#register-universite').removeClass('erreurSelect');
+    }
+    if ($('#register-role').val() == '0') {
+        messageErreur += 'role non sélectionner.<br/>';
         $('#register-role').addClass('erreurSelect');
     }
-    // fin
+    else {
+        messageErreur = '';
+        $('#register-role').removeClass('erreurSelect');
+    }
+  
     if (erreur == true) {
         messageErreur += 'Champ obligatoire doit etre rempli.<br/>';
     }
@@ -47,9 +63,8 @@ function inscription() {
                 'register-email': $('#register-email').val(),
                 'register-login': $('#register-login').val(),
                 'register-password': $('#register-password').val(),
-              //  'register-typesociete':$('#register-typesociete').checked.val(),
-              //  'register-societe': $('#register-unversite').val() || $('#register-entreprise').val(),
-              //  'register-role': $('#register-unversite').val()
+                'register-societe': $('#register-universite').val() || $('#register-entreprise').val(),
+                'register-role': $('#register-role').val()
             },
             url: "/accueil/inscription",
             success: function (msg) {
@@ -131,7 +146,8 @@ function afficherProfile(){
     });
 }
 function toggle() {
-  
+   // alert($('input:checked').val())
+
     /*var universite = document.getElementByName('universite');
     var entreprise = document.getElementByName('entreprise');*/
     var element1 = document.getElementById('entrep');

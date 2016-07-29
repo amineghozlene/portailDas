@@ -542,7 +542,7 @@
                                         <div class="row">
                                             <label for="register-societe" class="col-sm-3">Nom de la société<span class="require">*</span></label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" type="text" name="register-societe" id="register-societe"  required/>
+                                                <input class="form-control" type="text" name="register-entreprise" id="register-entreprise"  required/>
                                             </div>
                                         </div>
                                     </div>
@@ -550,7 +550,7 @@
                                         <div class="row">
                                             <label for="register-societe" class="col-sm-3">Nom de l'université<span class="require">*</span></label>
                                             <div class="col-sm-9">
-                                                <select class="form-control" name="register-societe" id="register-societe" required>
+                                                <select class="form-control" name="register-universite" id="register-universite" required>
                                                    <option value='0' selected>selectionner votre université</option>
                                                    @{
                                                        IList<Societe> socs = SocieteDAO.recupererToutSociete();
@@ -572,9 +572,9 @@
                                                     <div class="col-sm-9">
                                                         <select class="form-control" name="register-role" id="register-role" value="" required>
                                                             <option class="form-control" value='0' selected>sélectionner votre fonction</option>
-                                                            <option class="form-control" value="1">Etudiant</option>
-                                                            <option class="form-control" value="2">Enseignant</option>
-                                                            <option class="form-control" value="3">Administrateur </option>
+                                                            <option class="form-control" value="6">Etudiant</option>
+                                                            <option class="form-control" value="7">Enseignant</option>
+                                                            <option class="form-control" value="8">Administrateur </option>
                                                         </select>
                                                     </div>
                                                 </div>

@@ -8,7 +8,7 @@ namespace PortailDAS
 {
     public class RoleDAO
     {
-        public static Role recuperer(string nomRole)
+        public static Role recuperer(int idRole)
         {
             Role unRole = new Role();
 
@@ -17,7 +17,7 @@ namespace PortailDAS
 
                 try
                 {
-                    unRole = (Role)session.Get(typeof(Role), nomRole);
+                    unRole = (Role)session.Get(typeof(Role), idRole);
                 }
                 catch (Exception exception)
                 {
@@ -28,7 +28,7 @@ namespace PortailDAS
                         "TargetSite[" + exception.TargetSite + "]\r\n " +
                         "StackTrace[\r\n" + exception.StackTrace + "\r\n ]\r\n " +
                         ((exception.InnerException != null) ? "InnerException[\r\n  " + exception.InnerException + "\r\n ]\r\n " : "") +
-                        "NuméroRole[" + nomRole + "]"
+                        "NuméroRole[" + idRole + "]"
                     );
                     throw new Exception("Erreur recuperer compte : " + exception.Message);
                 }
