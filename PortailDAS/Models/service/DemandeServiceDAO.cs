@@ -1,0 +1,49 @@
+﻿using NHibernate;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace PortailDAS.Models.service
+{
+    public class DemandeServiceDAO
+    {
+        public static DemandeService creerDemandeService(int idService, int nbrLicense , Compte currentAccount)
+        {
+            using (ISession session = SessionNHibernate.ouvrirSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction()) { 
+                    try
+                    {
+                    Service serv = (Service)session.Get(typeof(Service), idService);
+                    DateTime date = System.DateTime.Now;
+                    DemandeService ds = new DemandeService();
+                    ds.idCompte = currentAccount;
+                    ds.DateOrder = date;
+                    ds.idService = serv;
+                    ds.nbrOrderService = nbrLicense;
+                        session.Save(ds);
+                        session.Flush();
+                        transaction.Commit();
+                    return ds;
+                }
+                catch (Exception exception)
+                {
+                    Log.versFichier.Error("\r\n " +
+                        "Classe[" + System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.ToString().Split('.')[System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.ToString().Split('.').Count() - 1] + "]\r\n " +
+                        "Fonction[" + System.Reflection.MethodBase.GetCurrentMethod().Name + "]\r\n " +
+                        "Exception[" + exception.Message + "]\r\n " +
+                        "TargetSite[" + exception.TargetSite + "]\r\n " +
+                        "StackTrace[\r\n" + exception.StackTrace + "\r\n ]\r\n " +
+                        ((exception.InnerException != null) ? "InnerException[\r\n  " + exception.InnerException + "\r\n ]\r\n " : "") +
+                        "NuméroRole[" + idService + "]"
+                    );
+                    throw new Exception("Erreur recuperer Service : " + exception.Message);
+                }
+
+                }
+
+            }
+        }
+    }
+}

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace PortailDAS.Models.service
 {
-    public class ServiceCompte
+    public class LicenseCompte
     {
         public virtual int idService { get; set; }
         public virtual string idSociete { get; set; }

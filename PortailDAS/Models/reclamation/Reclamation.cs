@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace PortailDAS.Models.compte
+namespace PortailDAS.Models.reclamation
 {
-    public class EnseignantDAO
+    public class Reclamation
     {
-        
     }
 }

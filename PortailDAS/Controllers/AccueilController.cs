@@ -100,7 +100,7 @@ namespace PortailDAS
             else
             {
                 if(compteDeLUtilisateur.idRole==6 || compteDeLUtilisateur.idRole == 7 || compteDeLUtilisateur.idRole == 8)
-                retourServeur = View("~/views/accueil/accueilElearning.cshtml");
+                retourServeur = View("~/views/Elearning/accueilElearning.cshtml");
                 else retourServeur = View("~/views/accueil/accueil.cshtml");
                 //ViewData["chargerLayout"] = "oui";
                 //if (Request["resterConnecter"] == "oui")
@@ -144,6 +144,7 @@ namespace PortailDAS
             CompteDAO.mettreAJour(unCompte);
             return View("~/views/accueil/profile.cshtml");
         }
+
         
        
     }

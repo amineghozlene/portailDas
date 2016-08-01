@@ -236,6 +236,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccueilController.cs" />
+    <Compile Include="Controllers\EnseignantController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,13 +253,16 @@
     <Compile Include="Models\compte\CompteBS.cs" />
     <Compile Include="Models\compte\CompteDAO.cs" />
     <Compile Include="Models\commun\SessionNHibernate.cs" />
-    <Compile Include="Models\compte\EnseignantDAO.cs" />
+    <Compile Include="Models\reclamation\Reclamation.cs" />
+    <Compile Include="Models\reclamation\ReclamationDAO.cs" />
     <Compile Include="Models\role\Role.cs" />
     <Compile Include="Models\role\RoleBS.cs" />
     <Compile Include="Models\role\RoleDAO.cs" />
+    <Compile Include="Models\service\DemandeService.cs" />
+    <Compile Include="Models\service\DemandeServiceDAO.cs" />
     <Compile Include="Models\service\Service.cs" />
     <Compile Include="Models\service\ServiceBS.cs" />
-    <Compile Include="Models\service\ServiceCompte.cs" />
+    <Compile Include="Models\service\LicenseCompte.cs" />
     <Compile Include="Models\service\ServiceDAO.cs" />
     <Compile Include="Models\societe\Societe.cs" />
     <Compile Include="Models\societe\SocieteBS.cs" />
@@ -285,6 +289,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mapping\categorie.hbm.xml" />
     <EmbeddedResource Include="Mapping\service.hbm.xml" />
+    <Content Include="Mapping\demandeService.hbm.xml" />
     <Content Include="Mapping\service_compte.hbm.xml" />
     <Content Include="Ressource\css\bootstrap\bootstrap.css" />
     <Content Include="Ressource\css\color\blue.css" />
@@ -674,7 +679,7 @@
     <Content Include="Ressource\js\library\slider-revolution\font\revicons90c6.ttf" />
     <Content Include="Ressource\js\library\slider-revolution\font\revicons90c6.woff" />
     <Content Include="Views\Accueil\profile.cshtml" />
-    <Content Include="Views\Accueil\accueilElearning.cshtml">
+    <Content Include="Views\Elearning\accueilElearning.cshtml">
       <BrowseToURL>~/Accueil/accueilElearning</BrowseToURL>
     </Content>
   </ItemGroup>

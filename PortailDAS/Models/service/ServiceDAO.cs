@@ -37,20 +37,20 @@ namespace PortailDAS
 
             return listeDesServices;
         }
-        public static IList<ServiceCompte> recupererListeDesServicesELearning()
+        public static IList<LicenseCompte> recupererListeDesServicesELearning()
         {
             HttpSessionState Session = ((HttpSessionState)HttpContext.Current.Session);
 
-            IList<ServiceCompte> listeDesServices = null;
+            IList<LicenseCompte> listeDesServices = null;
 
             using (ISession session = SessionNHibernate.ouvrirSession())
             {
 
                 try
                 {
-                    ICriteria criteres = session.CreateCriteria(typeof(ServiceCompte));
+                    ICriteria criteres = session.CreateCriteria(typeof(LicenseCompte));
                   //  criteres.Add(Restriction.eq());
-                    listeDesServices = criteres.List<ServiceCompte>();
+                    listeDesServices = criteres.List<LicenseCompte>();
                 }
                 catch (Exception exception)
                 {
