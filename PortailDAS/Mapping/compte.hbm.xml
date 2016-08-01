@@ -10,7 +10,7 @@
     <property name="password" column="password" type="string" length="45"  />
     <!--<one-to-one name="idSociete" class="PortailDAS.Societe" constrained="false" />
     <one-to-one name="idRole" class="PortailDAS.Role" constrained="false" />-->
-    <property name="idRole" column="idRole" type="int" not-null="true" />
+     <property name="idRole" column="idRole" type="int" not-null="true" />
     <!--<many-to-one name="idRole" column="idRole" class="PortailDAS.Role" not-found="ignore" fetch="join" />-->
     <many-to-one name="idCartePaiement" column="idCartePaiement" class="PortailDAS.CartePaiement" cascade="all" not-found="ignore" fetch="join" />
     <property name="etatValidation" column="etatValidation" type="string" length="20"  />

@@ -51,8 +51,16 @@ namespace PortailDAS
                 soc.domaineActivite = "";
                 soc.type = "entreprise" ;
             }
-            int idRole = Int32.Parse(Request["register-role"].ToString());
+            int idRole;
+            
+             idRole= Int32.Parse(Request["register-role"].ToString());
+           if(idRole==0)
+            
+            {
+                idRole = RoleBS.ICOMPTE_CLIENT;
+            }
             Role rol = RoleDAO.recuperer(idRole);
+            
             carteP.operateur = "";
             carteP.typeCarte = "";
             carteP.codeAutorisation = 111;

@@ -2,6 +2,7 @@
 }
 function inscription() {
     // Variables globales pour controler saisies
+    
     var verifierEmail = /^[a-z0-9._-]+@[a-z0-9.-]{2,}[.][a-z]{2,3}$/;
     erreur = false;
     messageErreur = '';
@@ -24,33 +25,38 @@ function inscription() {
         messageErreur += 'Password incorrect.<br/>';
         $('#register-confirm').addClass('erreurSaisie');
     }
-    if ($('input:checked').val() != '0' && $('input:checked').val() != '1') {
-        alert("cc")
+    if ($('input:checked').val() != '0' && $('input:checked').val() != '1') { 
         messageErreur += 'sélectionner le type de votre organisation.<br/>';
-        $('#register-typesociete').addClass('erreurRadio');
     }
-    else {
-        alert('cccc')
-        messageErreur = '';
-        $('#register-typesociete').removeClass('erreurRadio');
+    
+   /* if ($('#register-entreprise').val() == '' && $('input:checked').val() == '1') {
+        erreur = true;
+      //  $('#register-universite').addClass('erreurSaisie');
     }
-    if ($('#register-universite').val() == '0') {
+    else if ($('#register-entreprise').val() != '') {
+        
+        $('#register-universite').removeClass('erreurSelect');
+    }*/
+    if ($('#register-universite').val() == '0' && $('input:checked').val() == '0') {
         messageErreur += 'unversité non sélectionner.<br/>';
         $('#register-universite').addClass('erreurSelect');
     }
-    else {
-        messageErreur = '';
+    else if ($('#register-universite').val() != '0') {
+       
         $('#register-universite').removeClass('erreurSelect');
     }
-    if ($('#register-role').val() == '0') {
+    if ($('#register-role').val() == '0' && $('input:checked').val() == '0') {
+       
         messageErreur += 'role non sélectionner.<br/>';
         $('#register-role').addClass('erreurSelect');
     }
-    else {
-        messageErreur = '';
+    else if($('#register-role').val() != '0'){
+       
         $('#register-role').removeClass('erreurSelect');
     }
-  
+    
+    
+    
     if (erreur == true) {
         messageErreur += 'Champ obligatoire doit etre rempli.<br/>';
     }

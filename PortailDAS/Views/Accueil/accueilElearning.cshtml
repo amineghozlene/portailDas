@@ -246,7 +246,7 @@
                 <ul>
                     <li class="selector"></li>
                     <li><a data-categories="*" class="active">Tout</a></li>
-                    @* @{
+                     @{
                             IList<Service> listeService = ServiceDAO.recupererListeDesServicesAvecCatalogue();
                             IList<Service> listeService2 = listeService.GroupBy(x => x.idCategorie.idCategorie).Select(x => x.First()).ToList<Service>();
                             int nbrService2 = listeService2.Count();
@@ -257,18 +257,14 @@
                                 cpt1++;
                             }
 
-                        }*@
-                    <li><a data-categories="animation">Animation</a></li>
-                    <li><a data-categories="design">Design</a></li>
-                    <li><a data-categories="illustration" class="">Illustration</a></li>
-                    <li><a data-categories="photography">Photography</a></li>
-                    <li><a data-categories="web">Web</a></li>
+                        }
+                    
                 </ul>
                 <p><b>Trié par:</b> <span class="project-filter-current">Tout</span></p>
             </div>
         </div><!-- .project-filter -->
         <section class="projects grid" data-columns="4">
-            @* @{
+             @{
                     int cpt2 = 0;
                     while (cpt2 < nbrService) {
                         <article class="project project-animated @listeService[cpt2].idCategorie.idCategorie">
@@ -298,7 +294,7 @@
                         </article><!-- .project -->
                         cpt2++;
                     }
-                }*@
+                }
 
 
         </section><!-- .projects -->
@@ -440,172 +436,7 @@
                                 </div>
 
                             }
-                            else
-                            {
-
-                                <div class="tab" data-animation="slide">
-                                    <ul class="tab-heading">
-                                        <li class="current"><h6><a href="#">Log in</a></h6></li>
-                                        <li><h6><a href="#">Register</a></h6></li>
-                                    </ul><!-- .tab-heading -->
-                                    <div class="tab-content">
-                                        <div class="current">
-                                            <div class="form-field">
-                                                <div class="row">
-                                                    <label for="login-username" class="col-sm-3">Username<span class="require">*</span></label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="text" name="username" id="username" required />
-                                                    </div>
-                                                </div>
-                                            </div><!-- .form-field -->
-                                            <div class="form-field">
-                                                <div class="row">
-                                                    <label for="login-password" class="col-sm-3">Password<span class="require">*</span></label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="password" name="password" id="password" required />
-                                                    </div>
-                                                </div>
-                                            </div><!-- .form-field -->
-                                            <div class="form-field">
-                                                <div class="row">
-                                                    <div class="col-sm-offset-3 col-sm-9">
-                                                        <input type="checkbox" name="login-remember" id="login-remember">
-                                                        <label for="login-remember">Remember me</label>
-                                                    </div>
-                                                </div>
-                                            </div><!-- .form-field -->
-                                            <div class="form-field text-right">
-                                                <div class="form-group">
-                                                    Forgot your password? <a href="#" title="Password Lost and Found" class="recovery-open">Reset it here</a>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input onclick="seConnecter();" value="Log in" class="btn">
-                                                </div>
-                                            </div><!-- .form-field -->
-
-                                        </div>
-                                        <div id="inscription">
-
-                                            <div class="form-field">
-                                                <div class="row">
-                                                    <label for="register-nom" class="col-sm-3">Nom<span class="require">*</span></label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="text" name="register-nom" id="register-nom" required />
-                                                    </div>
-                                                </div>
-                                            </div><!-- .form-field -->
-                                            <div class="form-field">
-                                                <div class="row">
-                                                    <label for="register-prenom" class="col-sm-3">Prénom<span class="require">*</span></label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="text" name="register-prenom" id="register-prenom" required />
-                                                    </div>
-                                                </div>
-                                            </div><!-- .form-field -->
-                                            <div class="form-field">
-                                                <div class="row">
-                                                    <label for="register-email" class="col-sm-3">Email<span class="require">*</span></label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="text" name="register-email" id="register-email" required />
-                                                    </div>
-                                                </div>
-                                            </div><!-- .form-field -->
-                                            <div class="form-field">
-                                                <div class="row">
-                                                    <label for="register-login" class="col-sm-3">Login<span class="require">*</span></label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="text" name="register-login" id="register-login" required />
-                                                    </div>
-                                                </div>
-                                            </div><!-- .form-field -->
-                                            <div class="form-field">
-                                                <div class="row">
-                                                    <label for="register-password" class="col-sm-3">Password <span class="require">*</span></label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="password" name="register-password" minlength="6" id="register-password" required />
-                                                        <p class="form-desc">6 or more characters</p>
-                                                    </div>
-                                                </div>
-                                            </div><!-- .form-field -->
-                                            <div class="form-field">
-                                                <div class="row">
-                                                    <label for="register-confirm" class="col-sm-3">Confirm <span class="require">*</span></label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="password" name="register-confirm" id="register-confirm" minlength="6" placeholder="Retype password" required />
-                                                    </div>
-                                                </div>
-                                            </div><!-- .form-field -->
-                                            <div class="form-field">
-                                                <div class="row">
-                                                    <label for="register-typesociete" class="col-sm-3">Type de l'organisation<span class="require">*</span></label>
-                                                    <div class="col-sm-9">
-                                                        Université <input class="form-control" type="radio" name="register-typesociete" id="register-typesociete" onclick="toggle()" value="0" />
-                                                        Entreprise <input class="form-control" type="radio" name="register-typesociete" id="register-typesociete" onclick="toggle()" value="1" />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-field" id="entreprise" style="display:none">
-                                                <div class="row">
-                                                    <label for="register-societe" class="col-sm-3">Nom de la société<span class="require">*</span></label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control" type="text" name="register-societe" id="register-societe" required />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-field" id="universite" style="display:none">
-                                                <div class="row">
-                                                    <label for="register-societe" class="col-sm-3">Nom de la société<span class="require">*</span></label>
-                                                    <div class="col-sm-9">
-                                                        <select class="form-control" name="register-societe" id="register-societe" required>
-                                                            <option value="0" selected>selectionner votre </option>
-                                                            @{
-                                                                IList<Societe> socs = SocieteDAO.recupererToutSociete();
-                                                                foreach (Societe soc in socs)
-                                                                {
-                                                                    <option value="@soc.idSociete">@soc.nomSociete</option>
-                                                                }
-
-                                                            }
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="form-field" id="role" style="display:none">
-                                                <div class="row">
-                                                    <label for="register-role" class="col-sm-3">Fonction<span class="require">*</span></label>
-                                                    <div class="col-sm-9">
-                                                        <select class="form-control" name="register-role" id="register-role" value="" required>
-                                                            <option class="form-control" value="0" selected>sélectionner votre fonction</option>
-                                                            <option class="form-control" value="1">Etudiant</option>
-                                                            <option class="form-control" value="2">Enseignant</option>
-                                                            <option class="form-control" value="3">Administrateur </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
-
-                                            <!-- .form-field -->
-                                            @*<div class="form-field">
-                                                    <div class="row">
-                                                        <div class="col-sm-offset-3 col-sm-9">
-                                                            <input type="checkbox" name="register-remember" id="register-remember">
-                                                            <label for="register-remember">Remember me</label>
-                                                        </div>
-                                                    </div>
-                                                </div>*@<!-- .form-field -->
-                                            <div class="form-field text-right">
-                                                <input value="Register" class="btn" onclick="inscription();">
-                                            </div><!-- .form-field -->
-                                        </div>
-                                    </div><!-- .tab-content -->
-                                </div><!-- .tab -->
-                                                                }
+                                                       
                         }
                     </div><!-- .modal-content -->
                 </div><!-- .modal-body -->

@@ -252,6 +252,7 @@
     <Compile Include="Models\compte\CompteBS.cs" />
     <Compile Include="Models\compte\CompteDAO.cs" />
     <Compile Include="Models\commun\SessionNHibernate.cs" />
+    <Compile Include="Models\compte\EnseignantDAO.cs" />
     <Compile Include="Models\role\Role.cs" />
     <Compile Include="Models\role\RoleBS.cs" />
     <Compile Include="Models\role\RoleDAO.cs" />
@@ -673,7 +674,9 @@
     <Content Include="Ressource\js\library\slider-revolution\font\revicons90c6.ttf" />
     <Content Include="Ressource\js\library\slider-revolution\font\revicons90c6.woff" />
     <Content Include="Views\Accueil\profile.cshtml" />
-    <Content Include="Views\Accueil\acceuilElearning.cshtml" />
+    <Content Include="Views\Accueil\accueilElearning.cshtml">
+      <BrowseToURL>~/Accueil/accueilElearning</BrowseToURL>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
