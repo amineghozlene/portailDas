@@ -273,8 +273,8 @@
                                     <img src="/Ressource/imagesdas/services/@(listeService[cpt2].image != null && listeService[cpt2].image != "" ? listeService[cpt2].image : "img_default.png")" alt="Image" title="Image" />
                                 </div>
                                 <ul class="project-action">
-                                    <li><a class="btn btn-icon-view" href="#login-register" data-target="#login-register" data-toggle="modal" title="<h4>Pellentesque auctor</h4><p>Maecenas quam quam, bibendum sit amet mauris sit amet, dapibus lobortis felis. Ut auctor interdum est, sit amet imperdiet ante convallis sed.</p><p class='text-right'><a href='portfolio-single.html' class='btn'>View project</a></p>" data-fancybox-group="portfolio"></a></li>
-                                    <li><a class="link btn btn-icon-link" href="portfolio-single.html"></a></li>
+                                    <li><a class="btn btn-icon-view" href="#demandeService-register" data-target="#demandeService-register" data-toggle="modal" title="<h4>Pellentesque auctor</h4><p>Maecenas quam quam, bibendum sit amet mauris sit amet, dapibus lobortis felis. Ut auctor interdum est, sit amet imperdiet ante convallis sed.</p><p class='text-right'><a href='portfolio-single.html' class='btn'>View project</a></p>" data-fancybox-group="portfolio"onclick="@Session["Service"]=ServiceDAO.recupererService(listeService[cpt2].idService))"></a></li>
+                                    <li><a class="link btn btn-icon-link"  ></a></li>
                                 </ul>
                             </div><!-- .project-heading -->
                             <div class="project-content">
@@ -445,6 +445,62 @@
         </div><!-- .row -->
     </div><!-- .modal-dialog -->
 </div><!-- #login-register-modal -->
+<div id="demandeService-register" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog container">
+        <div class="row">
+
+            <div class="modal-bg" data-dismiss="modal"></div>
+
+            <div class="col-sm-7">
+
+                <div class="modal-body">
+                    <div class="modal-content">
+                    <div><h1 class="h3" align="center">Demande de service</h1></div>
+                        <div class="form-field">
+                            <div class="row">
+                                <label for="register_titreService" class="col-sm-3">Service</label>
+                                <div class="col-sm-7">
+                                    <input class="form-control" type="text" id="register_titreService" onclick="@((Service)Session["Service"] != null ? ((Service)Session["Service"]).titre : "")" required />
+                                </div>
+                            </div>
+                        </div><!-- .form-field -->
+                        <div class="form-field">
+                            <div class="row">
+                                <label for="register-dateUtilisation" class="col-sm-3">date début utilisation</label>
+                                <div class="col-sm-7">
+                                    <input class="form-control" type="date" id="register-dateUtilisation" value="@System.DateTime.Today" required />
+                                </div>
+                            </div>
+                        </div><!-- .form-field -->
+                        <div class="form-field">
+                            <div class="row">
+                                <label for="register-nbrUtilisateur" class="col-sm-3">nombre de licence</label>
+                                <div class="col-sm-7">
+                                    <input class="form-control" type="text" id="register-nbrUtilisateur" value="1" required />
+                                </div>
+                            </div>
+                        </div><!-- .form-field -->
+                        <div class="form-field">
+                            <div class="row">
+                                <label for="register-periode" class="col-sm-3">Login</label>
+                                <div class="col-sm-7">
+                                    <input class="form-control" type="text" id="register-periode" size="10" value="1" required /><label>mois</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-field text-right">
+                            <input value="Register" class="btn" onclick="demandeService()">
+                        </div><!-- .form-field -->
+                    </div><!-- .modal-content -->
+                </div><!-- .modal-body -->
+
+            </div><!-- .col-sm-7 -->
+        </div><!-- .row -->
+    </div><!-- .modal-dialog -->
+</div>
+
+
 
 <script type="text/javascript">
     initialisationInscription();

@@ -12,44 +12,41 @@
 
             <div class="form-field">
                 <div class="row">
-                    <label for="register-nom" class="col-sm-3">Nom</label>
+                    <label for="register_titreService" class="col-sm-3">Service</label>
                     <div class="col-sm-7">
-                        <input class="form-control" type="text" id="register-nom" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).nom : "")" required />
+                        <input class="form-control" type="text" id="register_titreService" value="@((Service)Session["Service"] != null ? ((Service)Session["Service"]).titre : "")" required />
                     </div>
                 </div>
             </div><!-- .form-field -->
             <div class="form-field">
                 <div class="row">
-                    <label for="register-prenom" class="col-sm-3">Prénom</label>
+                    <label for="register-dateUtilisation" class="col-sm-3">date début utilisation</label>
                     <div class="col-sm-7">
-                        <input class="form-control" type="text" id="register-prenom" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).prenom : "")" required />
+                        <input class="form-control" type="date" id="register-dateUtilisation" value="@System.DateTime.Now" required />
                     </div>
                 </div>
             </div><!-- .form-field -->
             <div class="form-field">
                 <div class="row">
-                    <label for="register-email" class="col-sm-3">Email</label>
+                    <label for="register-nbrUtilisateur" class="col-sm-3">nombre de licence</label>
                     <div class="col-sm-7">
-                        <input class="form-control" type="text" id="register-email" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).email : "")" required />
+                        <input class="form-control" type="text" id="register-nbrUtilisateur" value="1" required />
                     </div>
                 </div>
             </div><!-- .form-field -->
             <div class="form-field">
                 <div class="row">
-                    <label for="register-login" class="col-sm-3">Login</label>
+                    <label for="register-periode" class="col-sm-3">Login</label>
                     <div class="col-sm-7">
-                        <input class="form-control" type="text" id="register-login" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).login : "")" required />
+                        <input class="form-control" type="text" id="register-periode" value="1" required /><label>mois</label>
                     </div>
                 </div>
             </div>
-            <div class="form-field">
-                <div class="row">
-                    <label for="register-societe" class="col-sm-3">Nom de la société</label>
-                    <div class="col-sm-7">
-                        <input class="form-control" type="text" id="register-societe" value="@System.DateTime.Now" required />
-                    </div>
-                </div>
+            
+            <div class="form-field text-right">
+                <input value="Register" class="btn" onclick="demandeSerice();">
             </div><!-- .form-field -->
+          
 
            </div>
         </div>

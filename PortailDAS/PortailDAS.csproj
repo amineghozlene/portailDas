@@ -591,6 +591,7 @@
     <Content Include="Ressource\js\page\contact.js" />
     <Content Include="Ressource\js\page\home.js" />
     <Content Include="Ressource\js\page\inscription.js" />
+    <Content Include="Ressource\js\page\enseignant.js" />
     <Content Include="Ressource\js\page\profile.js" />
     <Content Include="Ressource\js\theme-options.js" />
     <Content Include="Ressource\js\theme.js" />

@@ -68,5 +68,33 @@ namespace PortailDAS
 
             return listeDesServices;
         }
+        public static Service recupererService(int idService)
+        {
+            Service unService = new Service();
+
+            using (ISession session = SessionNHibernate.ouvrirSession())
+            {
+
+                try
+                {
+                    unService = (Service)session.Get(typeof(Service), idService);
+                }
+                catch (Exception exception)
+                {
+                    Log.versFichier.Error("\r\n " +
+                        "Classe[" + System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.ToString().Split('.')[System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.ToString().Split('.').Count() - 1] + "]\r\n " +
+                        "Fonction[" + System.Reflection.MethodBase.GetCurrentMethod().Name + "]\r\n " +
+                        "Exception[" + exception.Message + "]\r\n " +
+                        "TargetSite[" + exception.TargetSite + "]\r\n " +
+                        "StackTrace[\r\n" + exception.StackTrace + "\r\n ]\r\n " +
+                        ((exception.InnerException != null) ? "InnerException[\r\n  " + exception.InnerException + "\r\n ]\r\n " : "") +
+                        "NuméroCompte[" + idService + "]"
+                    );
+                    throw new Exception("Erreur recuperer compte : " + exception.Message);
+                }
+            }
+
+            return unService;
+        }
     }
 }
