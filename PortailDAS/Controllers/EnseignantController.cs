@@ -15,7 +15,8 @@ namespace PortailDAS.Controllers
             Compte currentAccount = (Compte)Session["compte-utilisateur"];
             int idService =Int32.Parse( Request["idService"].ToString());
             int nbrUsers = Int32.Parse(Request["nombre-Utilisateur"].ToString());
-            DemandeServiceDAO.creerDemandeService(idService, nbrUsers, currentAccount);
+            DemandeService ds = new DemandeService();
+            DemandeServiceDAO.creerDemandeService(ds);
             return View("~/views/Elearning/accueilElearning.cshtml");
         }
         public ActionResult ReclamerProbleme()

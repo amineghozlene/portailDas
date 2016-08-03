@@ -8,20 +8,13 @@ namespace PortailDAS.Models.service
 {
     public class DemandeServiceDAO
     {
-        public static DemandeService creerDemandeService(int idService, int nbrLicense , Compte currentAccount)
+        public static DemandeService creerDemandeService(DemandeService ds)
         {
             using (ISession session = SessionNHibernate.ouvrirSession())
             {
                 using (ITransaction transaction = session.BeginTransaction()) { 
                     try
                     {
-                    Service serv = (Service)session.Get(typeof(Service), idService);
-                    DateTime date = System.DateTime.Now;
-                    DemandeService ds = new DemandeService();
-                    ds.idCompte = currentAccount;
-                    ds.DateOrder = date;
-                    ds.idService = serv;
-                    ds.nbrOrderService = nbrLicense;
                         session.Save(ds);
                         session.Flush();
                         transaction.Commit();
@@ -36,7 +29,7 @@ namespace PortailDAS.Models.service
                         "TargetSite[" + exception.TargetSite + "]\r\n " +
                         "StackTrace[\r\n" + exception.StackTrace + "\r\n ]\r\n " +
                         ((exception.InnerException != null) ? "InnerException[\r\n  " + exception.InnerException + "\r\n ]\r\n " : "") +
-                        "NuméroRole[" + idService + "]"
+                        "NuméroRole[" + ds.idService + "]"
                     );
                     throw new Exception("Erreur recuperer Service : " + exception.Message);
                 }

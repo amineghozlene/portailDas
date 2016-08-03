@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "demandeService";
+}
+<div class="container">
+
+    <!-- CONTENT -->
+    <div id="content">
+
+        <div id="profile" class="container-out container-light">
+            <h2>Profile</h2>
+
+            <div class="form-field">
+                <div class="row">
+                    <label for="register-nom" class="col-sm-3">Nom</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" type="text" id="register-nom" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).nom : "")" required />
+                    </div>
+                </div>
+            </div><!-- .form-field -->
+            <div class="form-field">
+                <div class="row">
+                    <label for="register-prenom" class="col-sm-3">Prénom</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" type="text" id="register-prenom" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).prenom : "")" required />
+                    </div>
+                </div>
+            </div><!-- .form-field -->
+            <div class="form-field">
+                <div class="row">
+                    <label for="register-email" class="col-sm-3">Email</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" type="text" id="register-email" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).email : "")" required />
+                    </div>
+                </div>
+            </div><!-- .form-field -->
+            <div class="form-field">
+                <div class="row">
+                    <label for="register-login" class="col-sm-3">Login</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" type="text" id="register-login" value="@((Compte)Session["compteUtilisateur"] != null ? ((Compte)Session["compteUtilisateur"]).login : "")" required />
+                    </div>
+                </div>
+            </div>
+            <div class="form-field">
+                <div class="row">
+                    <label for="register-societe" class="col-sm-3">Nom de la société</label>
+                    <div class="col-sm-7">
+                        <input class="form-control" type="text" id="register-societe" value="@System.DateTime.Now" required />
+                    </div>
+                </div>
+            </div><!-- .form-field -->
+
+           </div>
+        </div>
+    </div>
+<!--<script type="text/javascript">
+    initialisationProfile();
+</script-->
+
