@@ -1,4 +1,16 @@
-﻿function demandeService() {
+﻿function sessionService(idService) {
+        $.ajax({
+         type: "POST",
+         data: { 'session-service': idService },
+         url: "/Enseignant/sessionService",
+         success: function (retourServeur) {
+             $("#register_titreService").val(retourServeur);
+         }
+        
+     });
+        $("#"+idService).attr("data-target", "#demandeService-register");
+}
+function demandeService() {
     messageErreur = '';
    /*
     erreur = false;
@@ -48,3 +60,4 @@
         $('.alert-error').show();
     }
 }
+

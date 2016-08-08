@@ -1,5 +1,4 @@
-﻿
-<div class="page-slider-wrap">
+﻿<div class="page-slider-wrap">
     <div id="page-slider">
         <ul>
             <!-- SLIDE  -->
@@ -246,55 +245,57 @@
                 <ul>
                     <li class="selector"></li>
                     <li><a data-categories="*" class="active">Tout</a></li>
-                     @{
-                            IList<Service> listeService = ServiceDAO.recupererListeDesServicesAvecCatalogue();
-                            IList<Service> listeService2 = listeService.GroupBy(x => x.idCategorie.idCategorie).Select(x => x.First()).ToList<Service>();
-                            int nbrService2 = listeService2.Count();
-                            int nbrService = listeService.Count();
-                            int cpt1 = 0;
-                            while (cpt1 < nbrService2) {
-                                <li><a data-categories="@listeService2[cpt1].idCategorie.idCategorie">@listeService2[cpt1].idCategorie.titre</a></li>
-                                cpt1++;
-                            }
-
+                    @{
+                        IList<Service> listeService = ServiceDAO.recupererListeDesServicesAvecCatalogue();
+                        IList<Service> listeService2 = listeService.GroupBy(x => x.idCategorie.idCategorie).Select(x => x.First()).ToList<Service>();
+                        int nbrService2 = listeService2.Count();
+                        int nbrService = listeService.Count();
+                        int cpt1 = 0;
+                        while (cpt1 < nbrService2)
+                        {
+                            <li><a data-categories="@listeService2[cpt1].idCategorie.idCategorie">@listeService2[cpt1].idCategorie.titre</a></li>
+                            cpt1++;
                         }
-                    
+
+                    }
+
                 </ul>
                 <p><b>Trié par:</b> <span class="project-filter-current">Tout</span></p>
             </div>
         </div><!-- .project-filter -->
         <section class="projects grid" data-columns="4">
-             @{
-                    int cpt2 = 0;
-                    while (cpt2 < nbrService) {
-                        <article class="project project-animated @listeService[cpt2].idCategorie.idCategorie">
-                            <div class="project-heading">
-                                <div class="thumbnail">
-                                    <img src="/Ressource/imagesdas/services/@(listeService[cpt2].image != null && listeService[cpt2].image != "" ? listeService[cpt2].image : "img_default.png")" alt="Image" title="Image" />
-                                </div>
-                                <ul class="project-action">
-                                    <li><a class="btn btn-icon-view" href="#demandeService-register" data-target="#demandeService-register" data-toggle="modal" title="<h4>Pellentesque auctor</h4><p>Maecenas quam quam, bibendum sit amet mauris sit amet, dapibus lobortis felis. Ut auctor interdum est, sit amet imperdiet ante convallis sed.</p><p class='text-right'><a href='portfolio-single.html' class='btn'>View project</a></p>" data-fancybox-group="portfolio"onclick="@Session["Service"]=ServiceDAO.recupererService(listeService[cpt2].idService))"></a></li>
-                                    <li><a class="link btn btn-icon-link"  ></a></li>
-                                </ul>
-                            </div><!-- .project-heading -->
-                            <div class="project-content">
+            @{
+                int cpt2 = 0;
+                while (cpt2 < nbrService)
+                {
+                    <article class="project project-animated @listeService[cpt2].idCategorie.idCategorie">
+                        <div class="project-heading">
+                            <div class="thumbnail">
+                                <img src="/Ressource/imagesdas/services/@(listeService[cpt2].image != null && listeService[cpt2].image != "" ? listeService[cpt2].image : "img_default.png")" alt="Image" title="Image" />
+                            </div>
+                            <ul class="project-action">
+                                <li><a id="@listeService[cpt2].idService" class="btn btn-icon-view" onclick="sessionService(@listeService[cpt2].idService)" data-target="" data-toggle="modal" title="<h4>Pellentesque auctor</h4><p>Maecenas quam quam, bibendum sit amet mauris sit amet, dapibus lobortis felis. Ut auctor interdum est, sit amet imperdiet ante convallis sed.</p><p class='text-right'><a href='portfolio-single.html' class='btn'>View project</a></p>" data-fancybox-group="portfolio" ></a></li>
+                                <li><a class="link btn btn-icon-link"></a></li>
+                            </ul>
+                        </div><!-- .project-heading -->
+                        <div class="project-content">
 
-                                <p class="meta">
-                                    @listeService[cpt2].prixHT.ToString() DT
-                                </p><!-- .meta -->
+                            <p class="meta">
+                                @listeService[cpt2].prixHT.ToString() DT
+                            </p><!-- .meta -->
 
-                                <div class="title">
-                                    <h2 class="h5">@listeService[cpt2].titre</h2>
-                                    <p class="desc">@listeService[cpt2].description</p>
-                                </div><!-- .title -->
+                            <div class="title">
+                                <h2 class="h5">@listeService[cpt2].titre</h2>
+                                <p class="desc">@listeService[cpt2].description</p>
+                            </div><!-- .title -->
 
-                            </div><!-- .project-content -->
+                        </div><!-- .project-content -->
 
 
-                        </article><!-- .project -->
-                        cpt2++;
-                    }
+                    </article><!-- .project -->
+                    cpt2++;
                 }
+            }
 
 
         </section><!-- .projects -->
@@ -417,50 +418,32 @@
 
 </div><!-- .container -->
 <!-- Login/Register Modal -->
-<div id="login-register" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+
+<div id="demandeService-register" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="false">
     <div class="modal-dialog container">
         <div class="row">
 
-            <div class="modal-bg" data-dismiss="modal"></div>
+
 
             <div class="col-sm-7">
 
                 <div class="modal-body">
                     <div class="modal-content">
-                        <a onclick="" class="close btn btn-dark btn-icon-close" data-dismiss="modal" aria-hidden="true"></a>
-                        @{
-                            if ((Compte)Session["compteUtilisateur"] != null)
-                            {
-                                <div>
-                                    <label> Bonjour @(((Compte)Session["compteUtilisateur"]).nom) @(((Compte)Session["compteUtilisateur"]).prenom) </label>
-                                </div>
+                        <div class="modal-header" style="margin-bottom:20px;">
 
-                            }
-                                                       
-                        }
-                    </div><!-- .modal-content -->
-                </div><!-- .modal-body -->
 
-            </div><!-- .col-sm-7 -->
-        </div><!-- .row -->
-    </div><!-- .modal-dialog -->
-</div><!-- #login-register-modal -->
-<div id="demandeService-register" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-    <div class="modal-dialog container">
-        <div class="row">
+                            <label style="text-align:left;font-size:20px;font-weight:bold;"> Demande de service </label>
 
-            <div class="modal-bg" data-dismiss="modal"></div>
+                            <font align="right"><a onclick="" class="close btn btn-dark btn-icon-close" data-dismiss="modal" aria-hidden="true" /></font>
+                        </div>
 
-            <div class="col-sm-7">
 
-                <div class="modal-body">
-                    <div class="modal-content">
-                    <div><h1 class="h3" align="center">Demande de service</h1></div>
                         <div class="form-field">
                             <div class="row">
                                 <label for="register_titreService" class="col-sm-3">Service</label>
                                 <div class="col-sm-7">
-                                    <input class="form-control" type="text" id="register_titreService" onclick="@((Service)Session["Service"] != null ? ((Service)Session["Service"]).titre : "")" required />
+                                    <input class="form-control" type="text" id="register_titreService"  required />
+                                 
                                 </div>
                             </div>
                         </div><!-- .form-field -->
@@ -468,7 +451,7 @@
                             <div class="row">
                                 <label for="register-dateUtilisation" class="col-sm-3">date début utilisation</label>
                                 <div class="col-sm-7">
-                                    <input class="form-control" type="date" id="register-dateUtilisation" value="@System.DateTime.Today" required />
+                                    <input class="form-control" type="date" id="register-dateUtilisation" min="@System.DateTime.Today" max="@(System.DateTime.Today.Year+1)" value="" required />
                                 </div>
                             </div>
                         </div><!-- .form-field -->
@@ -482,15 +465,15 @@
                         </div><!-- .form-field -->
                         <div class="form-field">
                             <div class="row">
-                                <label for="register-periode" class="col-sm-3">Login</label>
+                                <label for="register-periode" class="col-sm-3">periode d'utilisation ( en mois )</label>
                                 <div class="col-sm-7">
-                                    <input class="form-control" type="text" id="register-periode" size="10" value="1" required /><label>mois</label>
+                                    <input class="form-control" type="text" id="register-periode" size="10" value="1" required />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-field text-right">
-                            <input value="Register" class="btn" onclick="demandeService()">
+                            <input value="Register" class="btn" onclick="demandeService()" data-dismiss="modal">
                         </div><!-- .form-field -->
                     </div><!-- .modal-content -->
                 </div><!-- .modal-body -->

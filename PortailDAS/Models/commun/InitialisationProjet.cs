@@ -113,6 +113,7 @@ public class InitialisationProjet : Controller
         HttpSessionState Session = ((HttpSessionState)System.Web.HttpContext.Current.Session);
         bool authentificationValide = true;
         Session["compteUtilisateur"] = unCompte;
+       
 
         // Détermination du profil utilisateur (éviter de faire se traitement x fois dans les templates)
         Session["utilisateurEstSuperAdministrateur"] = false;
