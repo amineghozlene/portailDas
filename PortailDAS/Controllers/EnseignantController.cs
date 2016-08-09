@@ -1,9 +1,5 @@
-﻿using PortailDAS.Models.service;
+﻿using PortailDAS.Models.demandeservice;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.SessionState;
 
@@ -20,12 +16,12 @@ namespace PortailDAS.Controllers
             int periode= Int32.Parse(Request["register-periode"].ToString());
             DateTime dateUtilisation = Convert.ToDateTime(Request["register-dateUtilisation"]);
             DemandeService ds = new DemandeService();
-            ds.idService = service;
-            ds.idCompte = currentAccount;
+          //  ds.idService = service;
+          //  ds.idCompte = currentAccount;
             ds.nbrOrderService = nbrUsers;
             ds.periodeUtilisation = periode;
             ds.DateOrder = System.DateTime.Now;
-            ds.DateUseOfService = dateUtilisation;
+            ds.DateUseOfService = dateUtilisation.Date;
             DemandeServiceDAO.creerDemandeService(ds);
             return View("~/views/Elearning/accueilElearning.cshtml");
         }

@@ -259,8 +259,8 @@
     <Compile Include="Models\role\Role.cs" />
     <Compile Include="Models\role\RoleBS.cs" />
     <Compile Include="Models\role\RoleDAO.cs" />
-    <Compile Include="Models\service\DemandeService.cs" />
-    <Compile Include="Models\service\DemandeServiceDAO.cs" />
+    <Compile Include="Models\demandeservice\DemandeService.cs" />
+    <Compile Include="Models\demandeservice\DemandeServiceDAO.cs" />
     <Compile Include="Models\service\Service.cs" />
     <Compile Include="Models\service\ServiceBS.cs" />
     <Compile Include="Models\service\LicenseCompte.cs" />

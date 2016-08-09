@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PortailDAS">
-  <class name="PortailDAS.DemandeService" table="demandeservice">
-
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"  assembly="PortailDAS">
+  <class name="PortailDAS.DemandeService" table="demandeservice" dynamic-update="true">
+    <cache usage="read-write"/>
+    
     <id name="idOrderService" column="idOrderService" type="int" unsaved-value="0">
       <generator class="native" />
     </id>
-    <property name="DateOrder" column="dateDemande" type="date" length="100" />
-    <property name="nbrOrderService" column="nbrServiceEnDemande" not-null="false"  type="Date" />
+    <property name="DateOrder" column="dateDemande" type="date"  />
+    <property name="nbrOrderService" column="nbrServiceEnDemande" not-null="false"  type="int" />
     <property name="DateUseOfService" column="dateUtilisationService" not-null="false"  type="Date" />
     <property name="periodeUtilisation" column="periodeUtilisationService" not-null="false"  type="int" />
     <many-to-one name="idService" column="idService" class="PortailDAS.DemandeService" not-found="ignore" fetch="join" />

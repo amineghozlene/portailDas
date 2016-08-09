@@ -11,8 +11,10 @@
         $("#"+idService).attr("data-target", "#demandeService-register");
 }
 function demandeService() {
+    alert("cc");
     messageErreur = '';
-   /*
+    var today = new Date();
+   
     erreur = false;
    
     $('#demandeService .form-control').each(function () {
@@ -25,7 +27,8 @@ function demandeService() {
             $(this).addClass('erreurSaisie');
         }
     });
-    if (dates.compare($('#register-dateUtilisation').val(), Date.now) == -1 || $('#register-dateUtilisation').val() == '') {
+    if ($('#register-dateUtilisation').val() < today || $('#register-dateUtilisation').val() == '') {
+        alert(today);
         alert("date incorrecte");
         messageErreur += 'date incorrect.<br/>';
         $('#register-dateUtilisation').addClass('erreurSaisie');
@@ -33,7 +36,7 @@ function demandeService() {
     if (erreur == true) {
         messageErreur += 'Champ obligatoire doit etre rempli.<br/>';
     }
-    */
+    
     if (messageErreur == '') {
         $.ajax({
             type: "POST",
