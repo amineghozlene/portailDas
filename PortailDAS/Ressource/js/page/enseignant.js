@@ -1,17 +1,28 @@
-﻿function sessionService(idService) {
-        $.ajax({
-         type: "POST",
-         data: { 'session-service': idService },
-         url: "/Enseignant/sessionService",
-         success: function (retourServeur) {
-             $("#register_titreService").val(retourServeur);
-         }
+﻿//function sessionService(idService) {
+//        $.ajax({
+//         type: "POST",
+//         data: { 'session-service': idService },
+//         url: "/Elearning/sessionService",
+//         success: function (retourServeur) {
+//             $("#register_titreService").val(retourServeur);
+//         }
         
-     });
-        $("#"+idService).attr("data-target", "#demandeService-register");
+//     });
+//        $("#"+idService).attr("data-target", "#demandeService-register");
+//}
+function sessionService(idService) {
+    $.ajax({
+        type: "POST",
+        data: { 'session-service': idService },
+        url: "/Elearning/sessionService",
+        success: function (retourServeur) {
+            $("#register_titreService").val(retourServeur);
+        }
+
+    });
+    $("#" + idService).attr("data-target", "#demandeService-register");
 }
 function demandeService() {
-    alert("cc");
     messageErreur = '';
     var today = new Date();
    
@@ -45,7 +56,7 @@ function demandeService() {
                 'register-nbrUtilisateur': $('#register-nbrUtilisateur').val(),
                 'register-periode': $('#register-periode').val(),
             },
-            url: "/Enseignant/demanderService",
+            url: "/Elearning/demanderService",
             success: function (retourServeur) {
                 $('html,body').scrollTop(0);
                 $('body').html(retourServeur);

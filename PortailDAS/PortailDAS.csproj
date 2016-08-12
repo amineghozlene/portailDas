@@ -237,7 +237,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccueilController.cs" />
-    <Compile Include="Controllers\EnseignantController.cs" />
+    <Compile Include="Controllers\ElearningController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -254,6 +254,7 @@
     <Compile Include="Models\compte\CompteBS.cs" />
     <Compile Include="Models\compte\CompteDAO.cs" />
     <Compile Include="Models\commun\SessionNHibernate.cs" />
+    <Compile Include="Models\demandeservice\DemandeServiceBS.cs" />
     <Compile Include="Models\reclamation\Reclamation.cs" />
     <Compile Include="Models\reclamation\ReclamationDAO.cs" />
     <Compile Include="Models\role\Role.cs" />
@@ -288,13 +289,17 @@
     <EmbeddedResource Include="Mapping\cartepaiement.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mapping\role.hbm.xml" />
+    <EmbeddedResource Include="Mapping\role.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mapping\societe.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mapping\categorie.hbm.xml" />
     <EmbeddedResource Include="Mapping\service.hbm.xml" />
-    <Content Include="Mapping\demandeService.hbm.xml" />
+    <EmbeddedResource Include="Mapping\demandeService.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="Mapping\service_compte.hbm.xml" />
     <Content Include="Ressource\css\bootstrap\bootstrap.css" />
     <Content Include="Ressource\css\color\blue.css" />
@@ -630,7 +635,6 @@
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Elearning\demandeService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -706,7 +710,7 @@
     <Content Include="Ressource\js\library\slider-revolution\font\revicons90c6.ttf" />
     <Content Include="Ressource\js\library\slider-revolution\font\revicons90c6.woff" />
     <Content Include="Views\Accueil\profile.cshtml" />
-    <Content Include="Views\Elearning\accueilElearning.cshtml">
+    <Content Include="Views\Elearning\elearning.cshtml">
       <BrowseToURL>~/Accueil/accueilElearning</BrowseToURL>
     </Content>
     <Content Include="Scripts\jquery-3.1.0.slim.min.map" />

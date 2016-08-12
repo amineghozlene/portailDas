@@ -100,7 +100,7 @@ namespace PortailDAS
             else
             {
                 if(compteDeLUtilisateur.idRole==6 || compteDeLUtilisateur.idRole == 7 || compteDeLUtilisateur.idRole == 8)
-                retourServeur = View("~/views/Elearning/accueilElearning.cshtml");
+                retourServeur = View("~/views/Elearning/elearning.cshtml");
                 else retourServeur = View("~/views/accueil/accueil.cshtml");
                 //ViewData["chargerLayout"] = "oui";
                 //if (Request["resterConnecter"] == "oui")

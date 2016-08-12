@@ -208,7 +208,7 @@ namespace PortailDAS
         public static IList<Compte> recupererdemandeValidationCompteElearning()
         {
             IList<Compte> comptes;
-            HttpSessionState Session = ((HttpSessionState)HttpContext.Current.Session);
+            
             using (ISession session = SessionNHibernate.ouvrirSession())
             {
 
