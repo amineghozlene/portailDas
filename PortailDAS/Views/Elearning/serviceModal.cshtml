@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "ServiceModal";
+    Layout = null;
+}
+<div class="modal-header" style="margin-bottom:20px;">
+
+
+    <label style="text-align:left;font-size:20px;font-weight:bold;"> Demande de service </label>
+
+    <font align="right"><a onclick="" class="close btn btn-dark btn-icon-close" data-dismiss="modal" aria-hidden="true" /></font>
+</div>
+
+
+<div class="form-field">
+    <div class="row">
+        <label for="register_titreService" class="col-sm-3">Service</label>
+        <div class="col-sm-7">
+            <input class="form-control" type="text" id="register_titreService" value="@((Service)Session["service"] != null ? ((Service)Session["service"]).titre : "")" required />
+
+        </div>
+    </div>
+</div><!-- .form-field -->
+<div class="form-field">
+    <div class="row">
+        <label for="register-dateUtilisation" class="col-sm-3">date début utilisation</label>
+        <div class="col-sm-7">
+            <input class="form-control" type="date" id="register-dateUtilisation" min="@System.DateTime.Today" max="@(System.DateTime.Today.Year+1)" value="" required />
+        </div>
+    </div>
+</div><!-- .form-field -->
+@{ 
+    if (((Compte)Session["compteUtilisateur"]).idRole == 7) {
+<div class="form-field">
+    <div class="row">
+        <label for="register-nbrUtilisateur" class="col-sm-3">nombre de licence</label>
+        <div class="col-sm-7">
+            <input class="form-control" type="text" id="register-nbrUtilisateur" value="1" required />
+        </div>
+    </div>
+</div><!-- .form-field -->
+    }
+}
+<div class="form-field">
+    <div class="row">
+        <label for="register-periode" class="col-sm-3">periode d'utilisation ( en mois )</label>
+        <div class="col-sm-7">
+            <input class="form-control" type="text" id="register-periode" size="10" value="1" required />
+        </div>
+    </div>
+</div>
+
+<div class="form-field text-right">
+    <input value="Register" class="btn" onclick="demandeService()">
+</div><!-- .form-field -->

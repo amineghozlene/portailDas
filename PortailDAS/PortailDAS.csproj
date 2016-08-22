@@ -254,7 +254,13 @@
     <Compile Include="Models\compte\CompteBS.cs" />
     <Compile Include="Models\compte\CompteDAO.cs" />
     <Compile Include="Models\commun\SessionNHibernate.cs" />
+    <Compile Include="Models\cours\Cours.cs" />
+    <Compile Include="Models\cours\CoursBS.cs" />
+    <Compile Include="Models\cours\CoursDAO.cs" />
     <Compile Include="Models\demandeservice\DemandeServiceBS.cs" />
+    <Compile Include="Models\formation\FormationBS.cs" />
+    <Compile Include="Models\formation\FormationDAO.cs" />
+    <Compile Include="Models\formation\Formation.cs" />
     <Compile Include="Models\reclamation\Reclamation.cs" />
     <Compile Include="Models\reclamation\ReclamationDAO.cs" />
     <Compile Include="Models\role\Role.cs" />
@@ -300,6 +306,8 @@
     <EmbeddedResource Include="Mapping\demandeService.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mapping\formation.hbm.xml" />
+    <EmbeddedResource Include="Mapping\cours.hbm.xml" />
     <Content Include="Mapping\service_compte.hbm.xml" />
     <Content Include="Ressource\css\bootstrap\bootstrap.css" />
     <Content Include="Ressource\css\color\blue.css" />
@@ -635,6 +643,8 @@
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\Elearning\serviceModal.cshtml" />
+    <Content Include="Views\Elearning\descriptionServiceModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -715,6 +725,9 @@
     </Content>
     <Content Include="Scripts\jquery-3.1.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

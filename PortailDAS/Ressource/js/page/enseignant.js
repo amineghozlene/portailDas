@@ -8,19 +8,33 @@
 //         }
         
 //     });
-//        $("#"+idService).attr("data-target", "#demandeService-register");
+//       $("#"+idService).attr("data-target", "#demandeService-register");
 //}
-function sessionService(idService) {
+
+function afficheModalServiceDescription(idService) {
     $.ajax({
         type: "POST",
         data: { 'session-service': idService },
-        url: "/Elearning/sessionService",
+        url: "/Elearning/afficheModalServiceDescription",
         success: function (retourServeur) {
-            $("#register_titreService").val(retourServeur);
-        }
-
+            $("#descriptionService .modal-content").html(retourServeur);
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            alert( errorThrown);
+    }   
     });
-    $("#" + idService).attr("data-target", "#demandeService-register");
+}
+function afficheModalServiceForm() {
+    $.ajax({
+        type: "POST",
+        url: "/Elearning/afficheModalServiceForm",
+        success: function (retourServeur) {
+            $("#demandeService-register .modal-content").html(retourServeur);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+    });
 }
 function demandeService() {
     messageErreur = '';

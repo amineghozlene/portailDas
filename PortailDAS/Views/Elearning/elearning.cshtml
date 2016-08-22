@@ -274,8 +274,9 @@
                                 <img src="/Ressource/imagesdas/services/@(listeService[cpt2].image != null && listeService[cpt2].image != "" ? listeService[cpt2].image : "img_default.png")" alt="Image" title="Image" />
                             </div>
                             <ul class="project-action">
-                                <li><a  class="btn btn-icon-view" href="#descriptionService-register" data-target="#descriptionService-register" data-toggle="modal" title="Description du service" data-fancybox-group="portfolio" ></a></li>
-                                <li><a class="link btn btn-icon-link" title="Demander le service" id="@listeService[cpt2].idService" onclick="sessionService(@listeService[cpt2].idService)" data-target="" data-toggle="modal"  data-fancybox-group="portfolio"></a></li>
+                                <li><a  class="btn btn-icon-view" title="Demander le service" id="@listeService[cpt2].idService" onclick="afficheModalServiceDescription(@listeService[cpt2].idService)" data-target="#descriptionService" data-toggle="modal" data-fancybox-group="portfolio" ></a></li>
+                                @*<li><a class="link btn btn-icon-link" title="Demander le service" id="@listeService[cpt2].idService" onclick="sessionService(@listeService[cpt2].idService)" data-target="" data-toggle="modal"  data-fancybox-group="portfolio"></a></li>*@
+                                <li><a class="link btn btn-icon-link" href="#" title="Description du service" data-fancybox-group="portfolio"></a></li>
                             </ul>
                         </div><!-- .project-heading -->
                         <div class="project-content">
@@ -421,88 +422,26 @@
 <div id="demandeService-register" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="false">
     <div class="modal-dialog container">
         <div class="row">
-
-
-
             <div class="col-sm-7">
-
                 <div class="modal-body">
-                    
                     <div class="modal-content">
 
-                        <div class="modal-header" style="margin-bottom:20px;">
-
-
-                            <label style="text-align:left;font-size:20px;font-weight:bold;"> Demande de service </label>
-
-                            <font align="right"><a onclick="" class="close btn btn-dark btn-icon-close" data-dismiss="modal" aria-hidden="true" /></font>
-                        </div>
-
-
-                        <div class="form-field">
-                            <div class="row">
-                                <label for="register_titreService" class="col-sm-3">Service</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" type="text" id="register_titreService"  required />
-                                 
-                                </div>
-                            </div>
-                        </div><!-- .form-field -->
-                        <div class="form-field">
-                            <div class="row">
-                                <label for="register-dateUtilisation" class="col-sm-3">date début utilisation</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" type="date" id="register-dateUtilisation" min="@System.DateTime.Today" max="@(System.DateTime.Today.Year+1)" value="" required />
-                                </div>
-                            </div>
-                        </div><!-- .form-field -->
-                        <div class="form-field">
-                            <div class="row">
-                                <label for="register-nbrUtilisateur" class="col-sm-3">nombre de licence</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" type="text" id="register-nbrUtilisateur" value="1" required />
-                                </div>
-                            </div>
-                        </div><!-- .form-field -->
-                        <div class="form-field">
-                            <div class="row">
-                                <label for="register-periode" class="col-sm-3">periode d'utilisation ( en mois )</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" type="text" id="register-periode" size="10" value="1" required />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-field text-right">
-                            <input value="Register" class="btn" onclick="demandeService()" >
-                        </div><!-- .form-field -->
                     </div><!-- .modal-content -->
                 </div><!-- .modal-body -->
-
             </div><!-- .col-sm-7 -->
         </div><!-- .row -->
     </div><!-- .modal-dialog -->
 </div>
 
+
 <!-- description du service Modal -->
-<div id="descriptionService-register" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="false">
+<div id="descriptionService" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="false">
     <div class="modal-dialog container">
         <div class="row">
             <div class="col-sm-7">
                 <div class="modal-body">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="col-md-4"><h6>Hello world !</h6></div>
-                            <div class="col-md-4 col-md-offset-4"><font align="right"><a onclick="" class="close btn btn-dark btn-icon-close" data-dismiss="modal" aria-hidden="true" /></font></div>
-                        </div>
-                        
-                    @{ 
-                        if ((Service)Session["service"] != null)
-                        {
-                            Service serv = (Service)Session["service"];
-                            <input type="text" value="@serv.titre" />
-                        }
-                    }
+
                     </div><!-- .modal-content -->
                 </div><!-- .modal-body -->
             </div><!-- .col-sm-7 -->

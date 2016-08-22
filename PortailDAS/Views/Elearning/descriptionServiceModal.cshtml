@@ -1,0 +1,13 @@
+﻿@{ 
+    Layout = null;
+}
+    <div class="thumbnail">
+        <img src="/Ressource/imagesdas/services/@((Service)Session["service"] != null ? ((Service)Session["service"]).image : "img_default.png")" alt="">
+        <div class="caption">
+            <p>
+                <h4>@(((Service)Session["service"]).titre)</h4>
+            </p>
+            <p>@(((Service)Session["service"]).description)</p>
+            <p><a class="btn btn-info btn-xs" role="button" onclick="afficheModalServiceForm()" data-target="#demandeService-register" data-toggle="modal" data-dismiss="modal">Demander le service</a><a href="#" class="btn btn-info btn-xs" role="button" data-dismiss="modal">close</a></p>
+        </div>
+</div>

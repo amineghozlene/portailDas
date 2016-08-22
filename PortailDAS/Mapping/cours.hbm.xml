@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"  assembly="PortailDAS">
+  <class name="PortailDAS.Cours" table="cours" dynamic-update="true">
+    <cache usage="read-write"/>
+
+    <id name="idCours" column="idcours" type="int" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="titre" column="titre" type="string"  />
+    <property name="description" column="description" not-null="false"  type="string" />
+    <property name="lien" column="lien" type="string"  />
+    <many-to-one name="idService" column="idService" class="PortailDAS.Service" not-found="ignore" fetch="join" />
+
+
+  </class>
+
+</hibernate-mapping>
