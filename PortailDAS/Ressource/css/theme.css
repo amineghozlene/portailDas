@@ -3719,12 +3719,13 @@ body > #boxed .container {
 			position: relative;
 			margin-bottom: 30px;
 			text-align: center;
+            font-family: 'Open Sans', sans-serif;
 		}
 		.thumbnail.thumbnail-no-margin {
 			margin-bottom: 0;
 		}
 			.thumbnail > a {
-				display: block;
+				display: inline;
 			}
 			.thumbnail .slider {
 				margin: 0;

@@ -67,6 +67,7 @@ namespace PortailDAS
                     //Theme CSS--,
                     "~/Ressource/js/library/slider-revolution/css/settings.css",
                     "~/Ressource/css/theme.css",
+                    "~/Ressource/css/notificationTheme.css",
                     "~/Ressource/css/theme-elements.css",
                     "~/Ressource/css/color/blue.css",
                     //Theme Options--,

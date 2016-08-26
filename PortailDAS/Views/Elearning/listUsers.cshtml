@@ -1,0 +1,21 @@
+﻿<table>
+    <tr>
+        <td>immatriculation</td>
+        <td>nom &Aacute; prénom</td>
+        <td>action</td>
+    </tr>
+    @{
+        foreach (Compte compte in CompteDAO.recupererCompteElearning(((Compte)Session["compteUtilisateur"]).idSociete.idSociete))
+        {
+            <tr>
+                <td>@compte.login</td>
+                <td>@compte.prenom  @compte.nom</td>
+                <td><a href="#" onclick="">delete</a></td>
+            </tr>
+        }
+    }
+</table>
+
+<script type="text/javascript">
+    initialisationProfile();
+</script>

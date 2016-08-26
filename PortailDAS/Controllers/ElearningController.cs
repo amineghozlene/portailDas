@@ -42,15 +42,6 @@ namespace PortailDAS.Controllers
         {
             return View("~/views/Elearning/elearning.cshtml");
         }
-        //[HttpPost]
-        //public String sessionService()
-        //{
-
-        //    HttpSessionState Session = ((HttpSessionState)System.Web.HttpContext.Current.Session);
-        //    Service serv = ServiceDAO.recupererService(Int32.Parse(Request["session-service"].ToString()));
-        //    Session["service"] = serv;
-        //    return serv.titre;
-        //}
         public ActionResult afficheModalServiceDescription()
         {
             HttpSessionState Session = ((HttpSessionState)System.Web.HttpContext.Current.Session);
@@ -60,10 +51,15 @@ namespace PortailDAS.Controllers
         }
         public ActionResult afficheModalServiceForm()
         {
-            //HttpSessionState Session = ((HttpSessionState)System.Web.HttpContext.Current.Session);
-            //Service serv = ServiceDAO.recupererService(Int32.Parse(Request["session-service"].ToString()));
-            //Session["service"] = serv;
             return View("~/views/Elearning/serviceModal.cshtml");
+        }
+        public ActionResult recupererCours()
+        {
+            HttpSessionState Session = ((HttpSessionState)System.Web.HttpContext.Current.Session);
+            Cours cours = CoursDAO.recupererCours(Int32.Parse(Request["idService"].ToString()));
+            Session["cours"] = cours;
+            //view manquante
+            return View();
         }
     }
 }

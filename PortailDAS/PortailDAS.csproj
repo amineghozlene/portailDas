@@ -34,6 +34,11 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+      </Objects>
+    </PublishDatabaseSettings>
+    <IncludeIisSettings>false</IncludeIisSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -329,6 +334,7 @@
     <Content Include="Ressource\css\fonts\opensans\opensans-light-webfont.svg" />
     <Content Include="Ressource\css\fonts\opensans\opensans-regular-webfont.svg" />
     <Content Include="Ressource\css\fonts\opensans\opensans-semibold-webfont.svg" />
+    <Content Include="Ressource\css\notificationTheme.css" />
     <Content Include="Ressource\css\theme-elements.css" />
     <Content Include="Ressource\css\theme-options.css" />
     <Content Include="Ressource\css\theme.css" />
@@ -541,6 +547,7 @@
     <Content Include="Ressource\img\uploads\slider\slide2.jpg" />
     <Content Include="Ressource\img\uploads\slider\slide3.jpg" />
     <Content Include="Ressource\img\uploads\two-iphones-preview.png" />
+    <Content Include="Ressource\img\alarm-bell.png" />
     <Content Include="Ressource\img\users\danielanderson.jpg" />
     <Content Include="Ressource\img\users\danielanderson_avatar.jpg" />
     <Content Include="Ressource\img\users\janejohnson.jpg" />
@@ -616,6 +623,10 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\amine.pubxml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\testDeploiment.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -645,6 +656,7 @@
     </Content>
     <Content Include="Views\Elearning\serviceModal.cshtml" />
     <Content Include="Views\Elearning\descriptionServiceModal.cshtml" />
+    <Content Include="Views\Elearning\listUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -659,8 +671,6 @@
     <Content Include="Views\Accueil\accueil.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Ressource\css\bootstrap\Descr.WD3" />
-    <Content Include="Ressource\css\fonts\awesome\css\Descr.WD3" />
-    <Content Include="Ressource\css\fonts\awesome\css\M663 1125q-11 -1 -15.5 -10.5t-8.5 -9.5q-5 -1 -5 5q0 12 19 15h10zM750 1111q-4 -1 -11.5 6.5t-17.5 4.5q03F7DC5A5A" />
     <Content Include="Ressource\css\fonts\awesome\fonts\Descr.WD3" />
     <Content Include="Ressource\css\fonts\awesome\fonts\fontawesome-webfont.eot%40" />
     <Content Include="Ressource\css\fonts\awesome\fonts\fontawesome-webfont.eot%40v=4.0.1" />

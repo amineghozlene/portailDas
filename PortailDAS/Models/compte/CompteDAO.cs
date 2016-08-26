@@ -235,6 +235,70 @@ namespace PortailDAS
 
             return comptes;
         }
+        public static IList<Compte> recupererCompteElearning(String idSoc)
+        {
+            IList<Compte> comptes;
+
+            using (ISession session = SessionNHibernate.ouvrirSession())
+            {
+
+                try
+                {
+                    ICriteria criteres = session.CreateCriteria(typeof(Compte));
+                    criteres.Add(Restrictions.Eq("idSociete", idSoc));
+
+                    comptes = criteres.List<Compte>();
+                }
+                catch (Exception exception)
+                {
+                    Log.versFichier.Error("\r\n " +
+                        "Classe[" + System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.ToString().Split('.')[System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.ToString().Split('.').Count() - 1] + "]\r\n " +
+                        "Fonction[" + System.Reflection.MethodBase.GetCurrentMethod().Name + "]\r\n " +
+                        "Exception[" + exception.Message + "]\r\n " +
+                        "TargetSite[" + exception.TargetSite + "]\r\n " +
+                        "StackTrace[\r\n" + exception.StackTrace + "\r\n ]" +
+                        ((exception.InnerException != null) ? "\r\n InnerException[\r\n  " + exception.InnerException + "\r\n ]" : "")
+                    );
+                    throw new Exception("Erreur authentifier : " + exception.Message);
+                }
+            }
+
+            return comptes;
+        }
+        public static Compte supprimer(Compte unCompte)
+        {
+            using (ISession session = SessionNHibernate.ouvrirSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+
+                    try
+                    {
+                        session.Delete(unCompte);
+                        session.Flush();
+                        transaction.Commit();
+                    }
+                    catch (Exception exception)
+                    {
+                        transaction.Rollback();
+                        Log.versFichier.Error("\r\n " +
+                            "Classe[" + System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.ToString().Split('.')[System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.ToString().Split('.').Count() - 1] + "]\r\n " +
+                            "Fonction[" + System.Reflection.MethodBase.GetCurrentMethod().Name + "]\r\n " +
+                            "Exception[" + exception.Message + "]\r\n " +
+                            "TargetSite[" + exception.TargetSite + "]\r\n " +
+                            "StackTrace[\r\n" + exception.StackTrace + "\r\n ]\r\n " +
+                            ((exception.InnerException != null) ? "InnerException[\r\n  " + exception.InnerException + "\r\n ]\r\n " : "") +
+                            "Compte[\r\n  " + new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(unCompte) + "\r\n ]" +
+                            "SessionEnParametre[Non]"
+
+
+                        );
+                        throw new Exception("Erreur creer compte : " + exception.Message);
+                    }
+                }
+            }
+            return unCompte;
+        }
 
     }
 }

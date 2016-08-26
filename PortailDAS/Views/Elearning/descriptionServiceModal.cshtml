@@ -2,12 +2,23 @@
     Layout = null;
 }
     <div class="thumbnail">
-        <img src="/Ressource/imagesdas/services/@((Service)Session["service"] != null ? ((Service)Session["service"]).image : "img_default.png")" alt="">
-        <div class="caption">
-            <p>
-                <h4>@(((Service)Session["service"]).titre)</h4>
-            </p>
-            <p>@(((Service)Session["service"]).description)</p>
-            <p><a class="btn btn-info btn-xs" role="button" onclick="afficheModalServiceForm()" data-target="#demandeService-register" data-toggle="modal" data-dismiss="modal">Demander le service</a><a href="#" class="btn btn-info btn-xs" role="button" data-dismiss="modal">close</a></p>
-        </div>
+    <img src="/Ressource/imagesdas/services/@((Service)Session["service"] != null ? ((Service)Session["service"]).image : "img_default.png")" alt="">
+    <div class="caption">
+        <p>
+            <h4>@(((Service)Session["service"]).titre)</h4>
+        </p>
+        <p>@(((Service)Session["service"]).description)</p>
+        <p><a class="btn btn-primary" role="button" onclick="afficheModalServiceForm()" data-target="#demandeService-register" data-toggle="modal" data-dismiss="modal">Demander le service</a>     <a href="#" class="btn btn-default" role="button" data-dismiss="modal">close</a></p>
+    </div>
 </div>
+@*<a onclick="" class="close btn btn-dark btn-icon-close" data-dismiss="modal" aria-hidden="true"></a>
+<div class="unServiceBody">
+    <div class="image col-sm-7"><img src="/Ressource/imagesdas/services/@((Service)Session["service"] != null ? ((Service)Session["service"]).image : "img_default.png")" /></div>
+    <div class="descriptionServ col-sm-5">
+        <span class="titre">@(((Service)Session["service"]).titre)</span><br />
+        <span class="detailS">@(((Service)Session["service"]).description)</span><br />
+@if ((Compte)Session["compteUtilisateur"] != null && ((Compte)Session["compteUtilisateur"]).idRole == RoleBS.ICOMPTE_ADMINISTRATEUR_UNIVERSITAIRE) { 
+        <span class="prix">@(((Service)Session["service"]).prixHT)</span>
+}
+    </div>
+</div>*@
