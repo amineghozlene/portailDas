@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace PortailDAS
 {
     public class AccueilController : InitialisationProjet
     {
+        public static IList<Notification> notification=new List<Notification>();
 
         // GET: Accueil
         public ActionResult Accueil()
@@ -32,6 +34,8 @@ namespace PortailDAS
 
         public ActionResult inscription()
         {
+            // création d'une nouvel notification
+            Notification notif;
             Compte unCompte = new Compte();
             unCompte.nom = Request["register-nom"].ToString();
             unCompte.prenom = Request["register-prenom"].ToString();
@@ -70,6 +74,12 @@ namespace PortailDAS
             unCompte.idCartePaiement = carteP;
             if (soc.type.Equals("universite")){
                 unCompte.etatValidation = "nonValidé";
+                notif = new Notification();
+                notif.compte = unCompte;
+                notif.date = DateTime.Now;
+                notif.service = null;
+                notification.Add(notif);
+               
             }
             else unCompte.etatValidation = "validé";
             CompteDAO.creer(unCompte);
@@ -145,7 +155,5 @@ namespace PortailDAS
             return View("~/views/accueil/profile.cshtml");
         }
 
-        
-       
     }
 }

@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+@{  IList<Notification> notifs;
+    if (((IList<Notification>)Session["notification"]) != null) {
+        notifs = ((IList<Notification>)Session["notification"]);
+    }
+    else
+    {
+        notifs = new List<Notification>();
+    }
+    int count = notifs.Count();
+    if (count==0)
+    {
+        <a class="content" href="#">
+            <div class="notification-item">
+                <h4>vous n'avez aucune notification</h4>
+            </div>
+        </a>
+    }
+    else
+    {
+        for (int i = 0; i < count; i++)
+        {
+            if (notifs.ElementAt(i).compte != null)
+            {
+                <a class="content" href="#">
+                    <div class="notification-item">
+                        @if (DateTime.Now.Subtract(notifs.ElementAt(i).date).TotalDays < 0)
+                        {
+                            <div class="item-title">@notifs.ElementAt(i).compte.login   @((int)DateTime.Now.Subtract(notifs.ElementAt(i).date).Hours) hours ago</div>
+                        }
+                        else
+                        {
+                            <div class="item-title">@notifs.ElementAt(i).compte.login   @((int)DateTime.Now.Subtract(notifs.ElementAt(i).date).TotalDays) days ago</div>
+                        }
+
+                        <div class="item-info">@notifs.ElementAt(i).compte.nom @notifs.ElementAt(i).compte.prenom </div>
+                    </div>
+                </a>
+            }
+        }
+    }
+}

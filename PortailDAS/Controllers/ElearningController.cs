@@ -14,6 +14,8 @@ namespace PortailDAS.Controllers
         // GET: Enseignant
         public ActionResult demanderService()
         {
+            //// création d'une nouvel notification
+            //Notification notif;
             HttpSessionState Session = ((HttpSessionState)System.Web.HttpContext.Current.Session);
             Service service = (Service)Session["service"];
             Compte currentAccount = (Compte)Session["compteUtilisateur"];
@@ -36,6 +38,9 @@ namespace PortailDAS.Controllers
             ds.DateOrder = System.DateTime.Now;
             ds.DateUseOfService = dateUtilisation.Date;
             DemandeServiceDAO.creerDemandeService(ds);
+            //notif = new Notification();
+            //notif.compte = unCompte;
+            //notif.date = DateTime.Now;
             return View("~/views/Elearning/elearning.cshtml");
         }
         public ActionResult ReclamerProbleme()
@@ -60,6 +65,32 @@ namespace PortailDAS.Controllers
             Session["cours"] = cours;
             //view manquante
             return View();
+        }
+        public ActionResult afficheNotification()
+        {
+            // if (((Compte)Session["compteUtilisateur"]).idRole == 8) {
+            Session["notification"] = AccueilController.notification;
+            //  }
+            return View("~/views/Elearning/notificationContainer.cshtml");
+        }
+        public ActionResult deleteNotification()
+        {  
+            return View();
+        }
+        public ActionResult openNotification()
+        {
+            int idService;
+            String idCompte;
+            if (Request["idService"].ToString() != null) {
+                idService = Int32.Parse(Request["idService"].ToString());
+                //processus payement
+            }else if (Request["idCompte"].ToString() != null) {
+                idCompte =Request["idCompte"].ToString();
+                Compte unCompte = CompteDAO.recuperer(idCompte);
+                CompteDAO.validerCompteElearning(unCompte);
+                AccueilController.notification.Remove(Notification.rechercheNotificationParCompte(unCompte));
+            }
+            return View("~/views/Elearning/notificationContainer.cshtml");
         }
     }
 }

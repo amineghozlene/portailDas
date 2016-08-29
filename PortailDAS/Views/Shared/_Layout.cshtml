@@ -47,21 +47,11 @@
                         <li><a onclick="afficherProfile();" title="Mon Compte">Mon Compte</a></li>
                         <li><a onclick="deconnexion();" title="Déconnexion">Déconnexion</a></li>
                         <li id="notification_li">
-                            <span id="notification_count">3</span>
-                            <a href="#" id="notificationLink"><img src="~/Ressource/img/alarm-bell.png" width="17px" heith="17px" />
+                            <span id="notification_count"></span>
+                            <a href="#" id="notificationLink" onclick="afficheNotif()"><img src="~/Ressource/img/alarm-bell.png" width="17px" heith="17px" />
 <span class="caret"></span></a>
 
-                            <div id="notificationContainer">
-                                <div id="notificationTitle">Notifications</div>
-                                <div id="notificationsBody" class="notifications">
-                                    <div> <a href="#">Page 1-1</a></div>
-                                    <div> <a href="#">Page 1-1</a></div>
-                                    <div> <a href="#">Page 1-1</a></div>
-                                    <div> <a href="#">Page 1-1</a></div>
-
-                                </div>
-                                <div id="notificationFooter"><a href="#">See All</a></div>
-                            </div>
+                            
 
                         </li>
                         @*<li class="dropdown">
@@ -95,6 +85,12 @@
 
         </nav><!-- .navbar -->
         <nav id="mobile-menu"></nav>
+        <div id="notificationContainer">
+            <div id="notificationTitle">Notifications</div>
+            <div id="notificationsBody" class="notifications">
+            </div>
+            <div id="notificationFooter"><a href="#">See All</a></div>
+        </div>
     </header><!-- #header -->
 
     <div id="header-space"></div>
@@ -177,6 +173,7 @@
         $("#notificationLink").click(function () {
             $("#notificationContainer").fadeToggle(300);
             $("#notification_count").fadeOut("slow");
+           // alert("cc");
             return false;
         });
 

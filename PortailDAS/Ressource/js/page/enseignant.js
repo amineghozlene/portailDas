@@ -88,4 +88,30 @@ function demandeService() {
         $('.alert-error').show();
     }
 }
+//function afficheNotif() {
+   
+//    $.ajax({
+//        type: "POST",
+//        url: "/Elearning/afficheNotification",
+//        success: function (data) {
+//            $("#notificationContainer .notifications").html(data);
+//        },
+//        error: function (jqXHR, textStatus, errorThrown) {
+//        alert(errorThrown);
+//    }
+//    });
+//}
+function afficheNotif() {
+    $.ajax({
+        type: "POST",
+        url: "/Elearning/afficheNotification",
+        success: function (retourServeur) {
+            alert("hello");
+            $("#notificationContainer .notifications").html(retourServeur);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
 

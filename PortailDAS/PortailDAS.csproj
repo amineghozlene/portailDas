@@ -266,6 +266,7 @@
     <Compile Include="Models\formation\FormationBS.cs" />
     <Compile Include="Models\formation\FormationDAO.cs" />
     <Compile Include="Models\formation\Formation.cs" />
+    <Compile Include="Models\notification\Notification.cs" />
     <Compile Include="Models\reclamation\Reclamation.cs" />
     <Compile Include="Models\reclamation\ReclamationDAO.cs" />
     <Compile Include="Models\role\Role.cs" />
@@ -657,6 +658,7 @@
     <Content Include="Views\Elearning\serviceModal.cshtml" />
     <Content Include="Views\Elearning\descriptionServiceModal.cshtml" />
     <Content Include="Views\Elearning\listUsers.cshtml" />
+    <Content Include="Views\Elearning\notificationContainer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

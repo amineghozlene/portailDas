@@ -1039,6 +1039,8 @@ body .btn.btn-white {
 	left: 0;
 	z-index: 3001;
 	display: none;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
 }
 	.modal-dialog {
 		padding-top: 30px;
@@ -5891,4 +5893,9 @@ body.mobile .project-carousel .teaser .teaser-info {
 }
 .erreurRadio{
     background-color: #ffd1ce !important;
+}
+#description{
+    
+    height:490px;
+    overflow-y:auto;
 }

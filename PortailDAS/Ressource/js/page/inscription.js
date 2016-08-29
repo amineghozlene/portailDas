@@ -76,7 +76,6 @@ function inscription() {
             success: function (msg) {
                 $('.alert-success .alert-content p').html('L\'inscription est faite avec succèes!');
                 $('.alert-success').show();
-
                 $('#login-register').modal('hide');
                 $('#inscription .form-control').each(function () {
                     $(this).val('');
