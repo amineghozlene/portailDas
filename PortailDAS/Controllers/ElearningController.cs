@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.SessionState;
@@ -7,6 +8,7 @@ namespace PortailDAS.Controllers
 {
     public class ElearningController : InitialisationProjet
     {
+        IList<Object> notif;
         public ActionResult Elearning()
         {
             return View();
@@ -68,9 +70,7 @@ namespace PortailDAS.Controllers
         }
         public ActionResult afficheNotification()
         {
-            // if (((Compte)Session["compteUtilisateur"]).idRole == 8) {
             Session["notification"] = AccueilController.notification;
-            //  }
             return View("~/views/Elearning/notificationContainer.cshtml");
         }
         public ActionResult deleteNotification()
@@ -92,5 +92,14 @@ namespace PortailDAS.Controllers
             }
             return View("~/views/Elearning/notificationContainer.cshtml");
         }
+        public ActionResult afficheListUser()
+        {
+            return View("~/views/Elearning/listUsers.cshtml");
+        }
+        public ActionResult afficheListAchat()
+        {
+            return View("~/views/Elearning/listDemandeAchat.cshtml");
+        }
+
     }
 }

@@ -612,7 +612,7 @@
     <Content Include="Ressource\js\page\contact.js" />
     <Content Include="Ressource\js\page\home.js" />
     <Content Include="Ressource\js\page\inscription.js" />
-    <Content Include="Ressource\js\page\enseignant.js" />
+    <Content Include="Ressource\js\page\ElearningDAS.js" />
     <Content Include="Ressource\js\page\profile.js" />
     <Content Include="Ressource\js\theme-options.js" />
     <Content Include="Ressource\js\theme.js" />
@@ -659,6 +659,7 @@
     <Content Include="Views\Elearning\descriptionServiceModal.cshtml" />
     <Content Include="Views\Elearning\listUsers.cshtml" />
     <Content Include="Views\Elearning\notificationContainer.cshtml" />
+    <Content Include="Views\Elearning\listDemandeAchat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,8 +11,7 @@
     @*<link rel="shortcut icon" type='image/x-icon' href="/Ressource/img/favicon/favicon.ico">*@
     <!-- Mobile Metas -->
     @*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
-
-
+   
     @Html.Raw("<meta name=\"viewport\" content=\"width = device - width, initial - scale = 1.0\">")
     @Styles.Render("~/bundles/fichiercss")
     @Scripts.Render("~/bundles/pagejavascript")
@@ -43,29 +42,34 @@
                     <li>
                         <a href="#Service">Service<i>Page elements</i></a>
                     </li>
-                    @if ((Compte)Session["compteUtilisateur"] != null) {
+                    @if ((Compte)Session["compteUtilisateur"] != null)
+                    {
+                        if (((Compte)Session["compteUtilisateur"]).idRole == 8)
+                        {
+                            //faut remplir l'evenement onclick
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Université
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" onclick="afficheListUser();">Gestion d'utilisateurs</a></li>
+                                    <li><a href="#" onclick="afficheListAchat();">Gestion d'achat de services</a></li>
+                                </ul>
+                            </li>
+                        }
                         <li><a onclick="afficherProfile();" title="Mon Compte">Mon Compte</a></li>
                         <li><a onclick="deconnexion();" title="Déconnexion">Déconnexion</a></li>
-                        <li id="notification_li">
-                            <span id="notification_count"></span>
-                            <a href="#" id="notificationLink" onclick="afficheNotif()"><img src="~/Ressource/img/alarm-bell.png" width="17px" heith="17px" />
-<span class="caret"></span></a>
-
-                            
-
-                        </li>
-                        @*<li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <img src="~/Ressource/img/alarm-bell.png" width="17px" heith="17px"/>
-            <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
-        </ul>
-    </li>*@
-                       
+                        if (((Compte)Session["compteUtilisateur"]).idRole == 8)
+                        {
+                            <li id="notification_li">
+                                <span id="notification_count"></span>
+                                <a href="#" id="notificationLink" onclick="afficheNotif()">
+                                    <img src="~/Ressource/img/alarm-bell.png" width="17px" heith="17px" title="Notification"/>
+                                    <span class="caret"></span>
+                                </a>
+                            </li>
+                        }
                     }
                     else
                     {

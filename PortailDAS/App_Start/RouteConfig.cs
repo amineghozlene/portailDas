@@ -14,6 +14,11 @@ namespace PortailDAS
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Accueil", action = "Accueil", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Elearning",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Elearning", action = "Elearning", id = UrlParameter.Optional }
+            );
         }
     }
 }

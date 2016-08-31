@@ -39,7 +39,8 @@ function afficheModalServiceForm() {
 function demandeService() {
     messageErreur = '';
     var today = new Date();
-   
+    var mydate = document.getElementById("register-dateUtilisation").value;
+    var desiredDay = new Date(mydate);
     erreur = false;
    
     $('#demandeService .form-control').each(function () {
@@ -52,9 +53,7 @@ function demandeService() {
             $(this).addClass('erreurSaisie');
         }
     });
-    if ($('#register-dateUtilisation').val() < today || $('#register-dateUtilisation').val() == '') {
-        alert(today);
-        alert("date incorrecte");
+    if (desiredDay < today || mydate == "") {
         messageErreur += 'date incorrect.<br/>';
         $('#register-dateUtilisation').addClass('erreurSaisie');
     }
@@ -88,26 +87,36 @@ function demandeService() {
         $('.alert-error').show();
     }
 }
-//function afficheNotif() {
-   
-//    $.ajax({
-//        type: "POST",
-//        url: "/Elearning/afficheNotification",
-//        success: function (data) {
-//            $("#notificationContainer .notifications").html(data);
-//        },
-//        error: function (jqXHR, textStatus, errorThrown) {
-//        alert(errorThrown);
-//    }
-//    });
-//}
 function afficheNotif() {
     $.ajax({
         type: "POST",
         url: "/Elearning/afficheNotification",
         success: function (retourServeur) {
-            alert("hello");
             $("#notificationContainer .notifications").html(retourServeur);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+function afficheListUser() {
+    $.ajax({
+        type: "POST",
+        url: "/Elearning/afficheListUser",
+        success: function (retourServeur) {
+            $('body').html(retourServeur);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+function afficheListAchat() {
+    $.ajax({
+        type: "POST",
+        url: "/Elearning/afficheListAchat",
+        success: function (retourServeur) {
+            $('body').html(retourServeur);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(errorThrown);

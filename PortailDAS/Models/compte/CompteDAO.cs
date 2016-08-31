@@ -245,7 +245,7 @@ namespace PortailDAS
                 try
                 {
                     ICriteria criteres = session.CreateCriteria(typeof(Compte));
-                    criteres.Add(Restrictions.Eq("idSociete", idSoc));
+                    criteres.Add(Restrictions.Eq("idSociete", SocieteDAO.recupererSociete(idSoc)));
 
                     comptes = criteres.List<Compte>();
                 }
