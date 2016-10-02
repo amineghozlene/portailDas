@@ -1,5 +1,4 @@
 ﻿using NHibernate;
-using PortailDAS.Models.service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,20 +36,20 @@ namespace PortailDAS
 
             return listeDesServices;
         }
-        public static IList<LicenseCompte> recupererListeDesServicesELearning()
+        public static IList<LicenceService> recupererListeDesServicesELearning()
         {
             HttpSessionState Session = ((HttpSessionState)HttpContext.Current.Session);
 
-            IList<LicenseCompte> listeDesServices = null;
+            IList<LicenceService> listeDesServices = null;
 
             using (ISession session = SessionNHibernate.ouvrirSession())
             {
 
                 try
                 {
-                    ICriteria criteres = session.CreateCriteria(typeof(LicenseCompte));
+                    ICriteria criteres = session.CreateCriteria(typeof(LicenceService));
                   //  criteres.Add(Restriction.eq());
-                    listeDesServices = criteres.List<LicenseCompte>();
+                    listeDesServices = criteres.List<LicenceService>();
                 }
                 catch (Exception exception)
                 {

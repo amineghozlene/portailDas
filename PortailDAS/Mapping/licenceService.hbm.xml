@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PortailDAS">
+  <class name="PortailDAS.LicenceService" table="licence_compte" dynamic-update="true">
+    <cache usage="read-write"/>
+    <id name="idServiceCompte" column="idservice_compte" type="int" />
+    <many-to-one name="idCompte" column="idCompte" class="PortailDAS.Compte" cascade="all" not-found="ignore" fetch="join" />
+    <many-to-one name="idService" column="idservice" class="PortailDAS.Service" cascade="all" not-found="ignore" fetch="join" />
+    <property name="dateAchat" column="dateAchat" type="Date" length="100" />
+    <property name="dateExpiration" column="dateExpiration" type="Date" length="100" />
+    <property name="etatLicence" column="etatLicence" type="string" length="100" />
+  </class>
+</hibernate-mapping>

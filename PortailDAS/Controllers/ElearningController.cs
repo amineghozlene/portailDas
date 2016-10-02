@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.SessionState;
@@ -7,8 +8,7 @@ using System.Web.SessionState;
 namespace PortailDAS.Controllers
 {
     public class ElearningController : InitialisationProjet
-    {
-        IList<Object> notif;
+    { 
         public ActionResult Elearning()
         {
             return View();
@@ -37,7 +37,7 @@ namespace PortailDAS.Controllers
             ds.idCompte = currentAccount;
             ds.nbrOrderService = nbrUsers;
             ds.periodeUtilisation = periode;
-            ds.DateOrder = System.DateTime.Now;
+            ds.dateCreation = System.DateTime.Now;
             ds.DateUseOfService = dateUtilisation.Date;
             DemandeServiceDAO.creerDemandeService(ds);
             //notif = new Notification();
@@ -63,17 +63,18 @@ namespace PortailDAS.Controllers
         public ActionResult recupererCours()
         {
             HttpSessionState Session = ((HttpSessionState)System.Web.HttpContext.Current.Session);
-            Cours cours = CoursDAO.recupererCours(Int32.Parse(Request["idService"].ToString()));
+            Cours cours = CoursDAO.recupererCoursParService(Int32.Parse(Request["idService"].ToString()));
             Session["cours"] = cours;
             //view manquante
             return View();
         }
         public ActionResult afficheNotification()
         {
+            
             Session["notification"] = AccueilController.notification;
             return View("~/views/Elearning/notificationContainer.cshtml");
         }
-        public ActionResult deleteNotification()
+        public ActionResult supprimerNotification()
         {  
             return View();
         }
@@ -98,6 +99,40 @@ namespace PortailDAS.Controllers
         }
         public ActionResult afficheListAchat()
         {
+            return View("~/views/Elearning/listDemandeAchat.cshtml");
+        }
+        // pas encore testé source stackoverflow
+        [HttpGet]
+        public ActionResult downloadFile()
+        {
+            int idCours = Int32.Parse(Request["fileID"].ToString());
+            Cours unCours = CoursDAO.recupererCoursParID(idCours);
+          //  string fullPath = Path.Combine(Server.MapPath("~/MyFiles"), unCours.titre);
+            return File(unCours.lien, MimeMapping.GetMimeMapping(unCours.lien), unCours.titre);
+        }
+        public ActionResult validerUserDansNotifications()
+        {
+            string idCompte = Request["id"].ToString();
+            Compte unCompte = CompteDAO.recuperer(idCompte);
+            CompteDAO.validerCompteElearning(unCompte);
+            AccueilController.notification.Remove(Notification.rechercheNotificationParCompte(unCompte));
+            return View("~/views/Elearning/notificationContainer.cshtml");
+        }
+        public ActionResult supprimerUserDansNotifications()
+        {
+            string idCompte = Request["id"].ToString();
+            Compte unCompte = CompteDAO.recuperer(idCompte);
+            CompteDAO.supprimer(unCompte);
+            AccueilController.notification.Remove(Notification.rechercheNotificationParCompte(unCompte));
+            return View("~/views/Elearning/notificationContainer.cshtml");
+        }
+        public ActionResult listeMesServices()
+        {
+            return View("~/views/Elearning/notificationContainer.cshtml");
+        }
+        public ActionResult creerLicenceService()
+        {
+
             return View("~/views/Elearning/listDemandeAchat.cshtml");
         }
 

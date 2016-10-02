@@ -35,7 +35,7 @@ namespace PortailDAS
         public ActionResult inscription()
         {
             // création d'une nouvel notification
-            Notification notif;
+            
             Compte unCompte = new Compte();
             unCompte.nom = Request["register-nom"].ToString();
             unCompte.prenom = Request["register-prenom"].ToString();
@@ -74,19 +74,26 @@ namespace PortailDAS
             unCompte.idCartePaiement = carteP;
             if (soc.type.Equals("universite")){
                 unCompte.etatValidation = "nonValidé";
-                notif = new Notification();
-                notif.compte = unCompte;
-                notif.date = DateTime.Now;
-                notif.service = null;
-                notification.Add(notif);
-               
             }
             else unCompte.etatValidation = "validé";
+            unCompte.dateCreation = DateTime.Now;
             CompteDAO.creer(unCompte);
-           
+            string objetMail = "Demande d'inscription webshop";
+            string templateMailClient = Outil.chargerTemplateEnUneChaine("\\Ressource\\templateHtml\\confirmationGenerique.html");
+            templateMailClient = templateMailClient.Replace("[#titreMail]", objetMail)
+                .Replace("[#phraseDebutMail]", "Votre demande d'inscription a bien été prise en compte.<br> nous allons traiter votre demande dans les plus brefs délais")
+                .Replace("[#phraseFinMail]", "Merci de votre compréhension")
+                .Replace("[#phraseGenerationAutomatique]", "Ceci est un email généré automatiquement, merci de ne pas répondre.")
+                .Replace("[#urlDuSiteXOL]", "www.dascloud.com");
+            Outil.envoyerEmail(
+                   Request["register-email"].ToString(),
+                   objetMail,
+                   templateMailClient
+           );
+            
             //Add user into AD
 
-           
+
 
             return View("~/views/accueil/accueil.cshtml");
         }
@@ -109,8 +116,15 @@ namespace PortailDAS
             }
             else
             {
-                if(compteDeLUtilisateur.idRole==6 || compteDeLUtilisateur.idRole == 7 || compteDeLUtilisateur.idRole == 8)
+                if(compteDeLUtilisateur.idRole==6 || compteDeLUtilisateur.idRole == 7 || compteDeLUtilisateur.idRole == 8) { 
+                    if (compteDeLUtilisateur.idRole == 8)
+                    {
+                        Notification.recupererNotificationInscription(compteDeLUtilisateur);
+                        Notification.recupererNotificationDemandeAchat(compteDeLUtilisateur);
+                        Session["notification"] = notification;
+                    }
                 retourServeur = View("~/views/Elearning/elearning.cshtml");
+                }
                 else retourServeur = View("~/views/accueil/accueil.cshtml");
                 //ViewData["chargerLayout"] = "oui";
                 //if (Request["resterConnecter"] == "oui")

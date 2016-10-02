@@ -33,21 +33,27 @@
                 <ul id="main-menu" class="custom">
                    
                     <li>
-                        <a href="/">Home</a>
+                        <a href="/" onmouseover="cacherNotification()">Home</a>
                     </li>
                     <li>
-                        <a href="#catalogues">Catalogues</a>
+                        <a href="#catalogues" onmouseover="cacherNotification()">Catalogues</a>
 
                     </li>
                     <li>
-                        <a href="#Service">Service<i>Page elements</i></a>
+                        <a href="#Service" onmouseover="cacherNotification()">Service<i>Page elements</i></a>
                     </li>
+                    
                     @if ((Compte)Session["compteUtilisateur"] != null)
                     {
+                        if (LicenceServiceDAO.recupererLicence((Compte)Session["compteUtilisateur"]).Count() > 0) {
+                            <li>
+                                <a href="#" onmouseover="cacherNotification()">Mes service</a>
+                            </li>
+                        }
                         if (((Compte)Session["compteUtilisateur"]).idRole == 8)
                         {
                             //faut remplir l'evenement onclick
-                            <li class="dropdown">
+                            <li class="dropdown"  onmouseover="cacherNotification()" >
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     Université
                                     <span class="caret"></span>
@@ -58,17 +64,20 @@
                                 </ul>
                             </li>
                         }
-                        <li><a onclick="afficherProfile();" title="Mon Compte">Mon Compte</a></li>
-                        <li><a onclick="deconnexion();" title="Déconnexion">Déconnexion</a></li>
+                        <li><a onclick="afficherProfile();" title="Mon Compte" onmouseover="cacherNotification()">Mon Compte</a></li>
+                        <li><a onclick="deconnexion();" title="Déconnexion" onmouseover="cacherNotification()">Déconnexion</a></li>
                         if (((Compte)Session["compteUtilisateur"]).idRole == 8)
                         {
                             <li id="notification_li">
-                                <span id="notification_count"></span>
-                                <a href="#" id="notificationLink" onclick="afficheNotif()">
-                                    <img src="~/Ressource/img/alarm-bell.png" width="17px" heith="17px" title="Notification"/>
-                                    <span class="caret"></span>
-                                </a>
-                            </li>
+                                @if (((IList<Notification>)Session["notification"]) != null)
+                                {
+                                    <span id="notification_count">@(((IList<Notification>)Session["notification"]).Count())</span>
+                                }
+                                    <a href="#" id="notificationLink" onclick="afficheNotif()">
+                                        <img src="~/Ressource/img/alarm-bell.png" width="17px" heith="17px" title="Notification" />
+
+                                    </a>
+</li>
                         }
                     }
                     else

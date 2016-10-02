@@ -5,7 +5,7 @@ using System.Web;
 
 namespace PortailDAS
 {
-    public class Compte
+    public class Compte : Notification
     {
         public virtual string nom { get; set; }
         public virtual string prenom { get; set; }

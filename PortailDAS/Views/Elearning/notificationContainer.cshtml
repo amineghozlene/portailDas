@@ -2,43 +2,78 @@
     Layout = null;
 }
 @{  IList<Notification> notifs;
-    if (((IList<Notification>)Session["notification"]) != null) {
+    if (((IList<Notification>)Session["notification"]) != null)
+    {
         notifs = ((IList<Notification>)Session["notification"]);
-    }
-    else
-    {
-        notifs = new List<Notification>();
-    }
-    int count = notifs.Count();
-    if (count==0)
-    {
-        <a class="content" href="#">
+        int count = notifs.Count();
+
+        if (count != 0) {
+
+
+            for (int i = 0; i < count; i++)
+            {
+                if(notifs.ElementAt(i) is Compte)
+                {
+                    Compte unCompte = (Compte)notifs[i];
+
+
+            <a class="content" href="#">
+                <div class="notification-item">
+                    @if (DateTime.Now.Subtract(notifs.ElementAt(i).dateCreation).TotalDays < 1)
+                    {
+                        <div class="item-title">@(((Compte)notifs.ElementAt(i)).login)   @((int)DateTime.Now.Subtract(notifs.ElementAt(i).dateCreation).Hours) hours ago</div>
+                    }
+                    else
+                    {
+                        <div class="item-title"> @(((Compte)notifs.ElementAt(i)).login)   @((int)DateTime.Now.Subtract(notifs.ElementAt(i).dateCreation).Days) days ago</div>
+                    }
+
+                    <div class="item-info">@(((Compte)notifs.ElementAt(i)).nom) @(((Compte)notifs.ElementAt(i)).prenom)</div>
+
+                    <div>
+                        <input type="button" onclick="validerUserNotif('@unCompte.login')" value="v" />
+                        <input type="button" onclick="supprimerUserNotif('@(((Compte)notifs.ElementAt(i)).login)')" value="s" />
+                    </div>
+                </div>
+            </a>
+                }
+                else
+                {
+                   
+                        DemandeService uneDemande = (DemandeService)notifs[i];
+
+
+                        <a class="content" href="#">
+                            <div class="notification-item">
+                                @if (DateTime.Now.Subtract(notifs.ElementAt(i).dateCreation).TotalDays < 1)
+                                {
+                                    <div class="item-title">@(((DemandeService)notifs.ElementAt(i)).idCompte.login)   @((int)DateTime.Now.Subtract(notifs.ElementAt(i).dateCreation).Hours) hours ago</div>
+                                }
+                                else
+                                {
+                                    <div class="item-title"> @(((DemandeService)notifs.ElementAt(i)).idCompte.nom)   @((int)DateTime.Now.Subtract(notifs.ElementAt(i).dateCreation).Days) days ago</div>
+                                }
+
+                                <div class="item-info">@(((DemandeService)notifs.ElementAt(i)).nbrOrderService) @(((DemandeService)notifs.ElementAt(i)).idService.titre) </div>
+
+                                <div>
+                                    <input type="button" onclick="" value="v" />
+                                    <input type="button" onclick="" value="s" />
+                                </div>
+                            </div>
+                        </a>
+                    
+                }
+            }
+        }
+        else
+        {
+                  <a class="content" href="#">
             <div class="notification-item">
                 <h4>vous n'avez aucune notification</h4>
             </div>
         </a>
-    }
-    else
-    {
-        for (int i = 0; i < count; i++)
-        {
-            if (notifs.ElementAt(i).compte != null)
-            {
-                <a class="content" href="#">
-                    <div class="notification-item">
-                        @if (DateTime.Now.Subtract(notifs.ElementAt(i).date).TotalDays < 0)
-                        {
-                            <div class="item-title">@notifs.ElementAt(i).compte.login   @((int)DateTime.Now.Subtract(notifs.ElementAt(i).date).Hours) hours ago</div>
-                        }
-                        else
-                        {
-                            <div class="item-title">@notifs.ElementAt(i).compte.login   @((int)DateTime.Now.Subtract(notifs.ElementAt(i).date).TotalDays) days ago</div>
-                        }
-
-                        <div class="item-info">@notifs.ElementAt(i).compte.nom @notifs.ElementAt(i).compte.prenom </div>
-                    </div>
-                </a>
-            }
         }
     }
-}
+    }
+

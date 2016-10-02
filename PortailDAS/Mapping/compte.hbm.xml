@@ -5,8 +5,9 @@
     <id name="login" column="idcompte" type="String"/>
     <property name="nom" column="nom" type="string" length="45" />
     <property name="prenom" column="prenom" type="string" length="45" />
-    <many-to-one name="idSociete" column="idsociete" class="PortailDAS.Societe" cascade="all" not-found="ignore" fetch="join" />
+    <many-to-one name="idSociete" column="idsociete" class="PortailDAS.Societe" not-found="ignore" fetch="join" />
     <property name="email" column="email" type="string" length="45" />
+    <property name="dateCreation" column="dateInscription" not-null="false" type="Date"  />
     <property name="password" column="password" type="string" length="45"  />
     <!--<one-to-one name="idSociete" class="PortailDAS.Societe" constrained="false" />
     <one-to-one name="idRole" class="PortailDAS.Role" constrained="false" />-->

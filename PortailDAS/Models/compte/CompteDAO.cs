@@ -205,7 +205,7 @@ namespace PortailDAS
             }
             return compte;
         }
-        public static IList<Compte> recupererdemandeValidationCompteElearning()
+        public static IList<Compte> recupererdemandeValidationCompteElearning(Compte cpt)
         {
             IList<Compte> comptes;
             
@@ -216,8 +216,9 @@ namespace PortailDAS
                 {
                     ICriteria criteres = session.CreateCriteria(typeof(Compte));
                     criteres.Add(Restrictions.Eq("etatValidation","nonValidé"));
-                    
-                  comptes = criteres.List<Compte>();
+                    criteres.Add(Restrictions.Eq("idSociete", cpt.idSociete));
+
+                    comptes = criteres.List<Compte>();
                 }
                 catch (Exception exception)
                 {

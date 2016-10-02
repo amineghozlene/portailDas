@@ -87,6 +87,7 @@ function demandeService() {
         $('.alert-error').show();
     }
 }
+// notification
 function afficheNotif() {
     $.ajax({
         type: "POST",
@@ -99,6 +100,22 @@ function afficheNotif() {
         }
     });
 }
+function cacherNotification() {
+    $("#notificationContainer").hide();
+}
+//pas encore testé
+function telechargementFichier(fileID) {
+    $.ajax({
+        type: 'POST',
+        url: '/Elearning/downloadFile',
+        data: {'fileID':fileID},
+        success: function (returnValue) {
+            window.location = '/Reports/Download?file=' + returnValue;
+        }
+    });
+}
+
+// Gestion université
 function afficheListUser() {
     $.ajax({
         type: "POST",
@@ -123,4 +140,74 @@ function afficheListAchat() {
         }
     });
 }
+function supprimerUser(id) {
+    $.ajax({
+        type: "POST",
+        data: { 'id': id },
+        url: "/Elearning/supprimerUserDansNotifications",
+        success: function (retourServeur) {
+            alert("ok");
+            $("#notificationContainer .notifications").html(retourServeur);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+function validerUserNotif(id) {
+    $.ajax({
+        type: "POST",
+        data: { 'id': id },
+        url: "/Elearning/validerUserDansNotifications",
+        success: function (retourServeur) {
+            alert("ok");
+            $("#notificationContainer .notifications").html(retourServeur);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
 
+function supprimerUserNotif(id) {
+    $.ajax({
+        type: "POST",
+        data: { 'id': id },
+        url: "/Elearning/supprimerUserDansNotifications",
+        success: function (retourServeur) {
+            alert("ok");
+            $("#notificationContainer .notifications").html(retourServeur);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+function validerUser(id) {
+    $.ajax({
+        type: "POST",
+        data: { 'id': id },
+        url: "/Elearning/validerUserDansNotifications",
+        success: function (retourServeur) {
+            alert("ok");
+            $("#notificationContainer .notifications").html(retourServeur);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+function modifierUser(id) {
+    $.ajax({
+        type: "POST",
+        data: { 'id': id },
+        url: "/Elearning/validerUserDansNotifications",
+        success: function (retourServeur) {
+            alert("ok");
+            $("#notificationContainer .notifications").html(retourServeur);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}

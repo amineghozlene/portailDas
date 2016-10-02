@@ -5,10 +5,9 @@ using System.Web;
 
 namespace PortailDAS
 {
-    public class DemandeService
+    public class DemandeService : Notification
     {
         public virtual int idOrderService { get; set; }
-        public virtual DateTime DateOrder { get; set; }
         public virtual DateTime DateUseOfService { get; set; }
         public virtual int periodeUtilisation { get; set; }
         public virtual int nbrOrderService { get; set; }

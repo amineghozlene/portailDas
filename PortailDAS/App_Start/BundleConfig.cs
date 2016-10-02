@@ -54,7 +54,8 @@ namespace PortailDAS
             bundles.Add(new ScriptBundle("~/bundles/pagejavascript").Include(
                 "~/Ressource/js/page/inscription.js",
                 "~/Ressource/js/page/profile.js",
-                "~/Ressource/js/page/ElearningDAS.js"
+                "~/Ressource/js/page/ElearningDAS.js",
+                "~/Ressource/js/page/event.js"
                 ));
 
             bundles.Add(new StyleBundle("~/bundles/fichiercss").Include(

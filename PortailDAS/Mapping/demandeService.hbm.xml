@@ -6,7 +6,7 @@
     <id name="idOrderService" column="idOrderService" type="int" unsaved-value="0">
       <generator class="native" />
     </id>
-    <property name="DateOrder" column="dateDemande" type="date"  />
+    <property name="dateCreation" column="dateDemande" not-null="false" type="Date"  />
     <property name="nbrOrderService" column="nbrServiceEnDemande" not-null="false"  type="int" />
     <property name="DateUseOfService" column="dateUtilisationService" not-null="false"  type="Date" />
     <property name="periodeUtilisation" column="periodeUtilisationService" not-null="false"  type="int" />

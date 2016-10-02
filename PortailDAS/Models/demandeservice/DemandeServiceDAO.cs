@@ -48,8 +48,8 @@ namespace PortailDAS
             using (ISession session = SessionNHibernate.ouvrirSession())
             {
 
-              //  try
-              //  {
+                try
+                {
                     var compteCriteria = DetachedCriteria.For<Compte>()
                 .SetProjection(Projections.Distinct(Projections.Property("login")))
                     .Add(Restrictions.Eq("idSociete", cpt.idSociete));
@@ -57,7 +57,7 @@ namespace PortailDAS
                     var demandeServiceCriteria= DetachedCriteria.For<DemandeService>()
                 .Add(Subqueries.PropertyIn("idCompte", compteCriteria));
                     demandes = demandeServiceCriteria.GetExecutableCriteria(session).List<DemandeService>();
-               /* }
+                }
                 catch (Exception exception)
                 {
                     Log.versFichier.Error("\r\n " +
@@ -69,7 +69,7 @@ namespace PortailDAS
                         ((exception.InnerException != null) ? "\r\n InnerException[\r\n  " + exception.InnerException + "\r\n ]" : "")
                     );
                     throw new Exception("Erreur authentifier : " + exception.Message);
-                }*/
+                }
             }
 
             return demandes;

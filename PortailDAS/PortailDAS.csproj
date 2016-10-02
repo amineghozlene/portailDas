@@ -255,6 +255,7 @@
     <Compile Include="Models\commun\Cryptage.cs" />
     <Compile Include="Models\commun\InitialisationProjet.cs" />
     <Compile Include="Models\commun\Log.cs" />
+    <Compile Include="Models\commun\Outil.cs" />
     <Compile Include="Models\compte\Compte.cs" />
     <Compile Include="Models\compte\CompteBS.cs" />
     <Compile Include="Models\compte\CompteDAO.cs" />
@@ -266,6 +267,8 @@
     <Compile Include="Models\formation\FormationBS.cs" />
     <Compile Include="Models\formation\FormationDAO.cs" />
     <Compile Include="Models\formation\Formation.cs" />
+    <Compile Include="Models\licence\LicenceServiceBS.cs" />
+    <Compile Include="Models\licence\LicenceServiceDAO.cs" />
     <Compile Include="Models\notification\Notification.cs" />
     <Compile Include="Models\reclamation\Reclamation.cs" />
     <Compile Include="Models\reclamation\ReclamationDAO.cs" />
@@ -276,7 +279,7 @@
     <Compile Include="Models\demandeservice\DemandeServiceDAO.cs" />
     <Compile Include="Models\service\Service.cs" />
     <Compile Include="Models\service\ServiceBS.cs" />
-    <Compile Include="Models\service\LicenseCompte.cs" />
+    <Compile Include="Models\licence\LicenceService.cs" />
     <Compile Include="Models\service\ServiceDAO.cs" />
     <Compile Include="Models\societe\Societe.cs" />
     <Compile Include="Models\societe\SocieteBS.cs" />
@@ -314,7 +317,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mapping\formation.hbm.xml" />
     <EmbeddedResource Include="Mapping\cours.hbm.xml" />
-    <Content Include="Mapping\service_compte.hbm.xml" />
+    <EmbeddedResource Include="Mapping\licenceService.hbm.xml" />
     <Content Include="Ressource\css\bootstrap\bootstrap.css" />
     <Content Include="Ressource\css\color\blue.css" />
     <Content Include="Ressource\css\color\brown.css" />
@@ -610,6 +613,7 @@
     <Content Include="Ressource\js\library\validate\jquery.validate.min.js" />
     <Content Include="Ressource\js\page\about.js" />
     <Content Include="Ressource\js\page\contact.js" />
+    <Content Include="Ressource\js\page\event.js" />
     <Content Include="Ressource\js\page\home.js" />
     <Content Include="Ressource\js\page\inscription.js" />
     <Content Include="Ressource\js\page\ElearningDAS.js" />
@@ -629,6 +633,7 @@
     </None>
     <None Include="Properties\PublishProfiles\testDeploiment.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
+    <Content Include="Ressource\templateHtml\confirmationGenerique.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
@@ -660,9 +665,11 @@
     <Content Include="Views\Elearning\listUsers.cshtml" />
     <Content Include="Views\Elearning\notificationContainer.cshtml" />
     <Content Include="Views\Elearning\listDemandeAchat.cshtml" />
+    <Content Include="Views\Elearning\maListDeService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Ressource\File\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

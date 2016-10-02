@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace PortailDAS.Models.service
+namespace PortailDAS
 {
-    public class LicenseCompte
+    public class LicenceService
     {
-        public virtual int idService { get; set; }
-        public virtual string idSociete { get; set; }
+        public virtual Service idService { get; set; }
+        public virtual Compte idCompte { get; set; }
         public virtual DateTime dateAchat { get; set; }
         public virtual DateTime dateExpiration { get; set; }
         public virtual int idServiceCompte { get; set; }
+        public virtual string etatLicence { get; set; }
     }
 }
